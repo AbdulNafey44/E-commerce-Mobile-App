@@ -1,0 +1,35 @@
+name: e_commerce
+description: "A new Flutter project."
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  flutter_native_splash: ^2.4.7
+  lottie: ^3.3.2
+  smooth_page_indicator: ^2.0.1
+  get: ^4.7.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^5.0.0
+
+flutter:
+  assets:
+    - assets/logo/black_app_logo.png
+    - assets/logo/white_app_logo.png
+    - assets/animations/
+
+
+  uses-material-design: true
+
