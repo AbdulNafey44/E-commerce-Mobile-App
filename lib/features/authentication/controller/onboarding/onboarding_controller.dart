@@ -1,3 +1,4 @@
+import 'package:e_commerce/features/authentication/screens/login/login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
@@ -24,6 +25,7 @@ void dotNavigationClick(index){
   //update current index and jump to the next page
 void nextPage(){
 if (currentIndex.value == 2) {
+  Get.offAll(() => LoginScreen());
   return ;
 }
 

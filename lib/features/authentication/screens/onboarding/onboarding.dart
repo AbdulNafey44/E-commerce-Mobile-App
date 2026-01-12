@@ -8,12 +8,12 @@ import 'package:e_commerce/utils/constants/texts.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:lottie/lottie.dart';
 
 
-import '../../../../common/widgets/button/elevated_button.dart';
+
+
 import '../../../../utils/constants/sizes.dart';
-import '../../../../utils/helpers/device_helpers.dart';
+
 import '../../controller/onboarding/onboarding_controller.dart';
 
 class Onboarding extends StatelessWidget {
