@@ -51,7 +51,7 @@ class USignupForm extends StatelessWidget {
         TextFormField(
           decoration: InputDecoration(
             labelText: UText.phone,
-            prefixIcon: Icon(Iconsax.mobile),
+            prefixIcon: Icon(Iconsax.call),
           ),
         ),
         SizedBox(height: USizes.spaceBtwInputFields * 1.5),
@@ -64,39 +64,7 @@ class USignupForm extends StatelessWidget {
         ),
         SizedBox(height: USizes.spaceBtwInputFields,),
         //...check box...///
-        Row(
-          children: [
-            Checkbox(value: true, onChanged: (value) {}),
-            RichText(
-              text: TextSpan(
-                style: Theme.of(context).textTheme.bodyMedium,
-                children: [
-                  TextSpan(text: ' ${UText.iAgreeTo}'),
-                  TextSpan(
-                    text: '${UText.privacyPolicy}',
-                    style: Theme.of(context).textTheme.bodyMedium!
-                        .copyWith(
-                      color: UColors.primary,
-                      decoration: TextDecoration.underline,
-                      decorationColor: UColors.primary,
-                    ),
-                  ),
-                  TextSpan(text: ' ${UText.and}'),
-                  TextSpan(
-                    text: ' ${UText.termsOfUse}',
-                    style: Theme.of(context).textTheme.bodyMedium!
-                        .copyWith(
-                      color: UColors.primary,
-                      decoration: TextDecoration.underline,
-                      decorationColor: UColors.primary,
-                    ),
-                  ),
-
-                ],
-              ),
-            ),
-          ],
-        ),
+        PrivacyPolicyCheckBox(),
         SizedBox(height: USizes.spaceBtwItems,),
 
         UElevatedButton(onPressed: (){}, child: Text(UText.createAccount)),
@@ -111,3 +79,4 @@ class USignupForm extends StatelessWidget {
     );
   }
 }
+
