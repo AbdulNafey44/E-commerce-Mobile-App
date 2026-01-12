@@ -36,7 +36,7 @@ class LoginScreen extends StatelessWidget {
               ///email & password textfield
               ULoginForm(),
               ///...Dividor...///
-              SizedBox(height: USizes.spaceBtwSections),
+              SizedBox(height: USizes.spaceBtwSections  ),
              UFormDivider(title: UText.orSignWith,),
               SizedBox(height: USizes.spaceBtwSections),
               ///...Footer...///
