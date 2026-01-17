@@ -1,9 +1,12 @@
 import 'package:e_commerce/common/style/padding.dart';
+
+import 'package:e_commerce/features/authentication/screens/signup/widgets/signup_form.dart';
+
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:e_commerce/utils/constants/texts.dart';
-import 'package:e_commerce/utils/theme/widgets_theme/text_theme.dart';
+
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
+
 
 class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});
@@ -25,63 +28,8 @@ class SignupScreen extends StatelessWidget {
               ),
               SizedBox(height: USizes.spaceBtwSections),
               //.....Form....///
-              Column(
-                children: [
-                  Row(
-                    children: [
-                      Expanded(
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                            labelText: UText.firstName,
-                            prefixIcon: Icon(Iconsax.user),
-                          ),
-                        ),
-                      ),
-                      SizedBox(width: USizes.spaceBtwInputFields),
-                      Expanded(
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                            labelText: UText.lastName,
-                            prefixIcon: Icon(Iconsax.user),
-                          ),
-                        ),
-                      ),
+              USignupForm(),
 
-                    ],
-                  ),
-
-                  SizedBox(height: USizes.spaceBtwSections,),
-                  ///.....email phone password...///
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: UText.signUpEmail,
-                      prefixIcon: Icon(Iconsax.direct_right),
-                    ),
-                  ),
-                  SizedBox(height: USizes.spaceBtwInputFields * 1.5,),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: UText.phone,
-                      prefixIcon: Icon(Iconsax.mobile),
-                    ),
-                  ),
-                  SizedBox(height: USizes.spaceBtwInputFields * 1.5,),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: UText.signUpPassword,
-                      prefixIcon: Icon(Iconsax.password_check),
-                      suffixIcon: Icon(Iconsax.eye),
-                    ),
-                  ),
-                  //...check box...///
-                  Row(
-                    children: [],
-                  )
-                ],
-              ),
-              //....Dividor....///
-
-              //...Footer...///
             ],
           ),
         ),
@@ -89,3 +37,5 @@ class SignupScreen extends StatelessWidget {
     );
   }
 }
+
+

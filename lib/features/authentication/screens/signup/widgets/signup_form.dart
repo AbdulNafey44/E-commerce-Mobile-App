@@ -1,12 +1,13 @@
+import 'package:e_commerce/features/authentication/screens/signup/widgets/signup_checkbox.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../../../common/widgets/button/elevated_button.dart';
-import '../../../../common/widgets/button/social_button.dart';
-import '../../../../common/widgets/login_signup/form_divider.dart';
-import '../../../../utils/constants/colors.dart';
-import '../../../../utils/constants/sizes.dart';
-import '../../../../utils/constants/texts.dart';
+import '../../../../../common/widgets/button/elevated_button.dart';
+import '../../../../../common/widgets/button/social_button.dart';
+import '../../../../../common/widgets/login_signup/form_divider.dart';
+
+import '../../../../../utils/constants/sizes.dart';
+import '../../../../../utils/constants/texts.dart';
 class USignupForm extends StatelessWidget {
   const USignupForm({
     super.key,

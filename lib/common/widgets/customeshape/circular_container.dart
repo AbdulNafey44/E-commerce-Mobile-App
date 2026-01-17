@@ -1,22 +1,37 @@
 import 'package:flutter/material.dart';
 
 import '../../../utils/constants/colors.dart';
-import '../../../utils/helpers/device_helpers.dart';
 
 class UCircularContainer extends StatelessWidget {
   const UCircularContainer({
     super.key,
+     this.height = 400,
+     this.width = 400,
+     this.radius = 400,
+     this.backgroundColor = UColors.white,
+     this.padding,
+     this.margin,
+    this.child,
   });
+
+  final double height, width, radius;
+  final Color backgroundColor;
+  final EdgeInsetsGeometry?  padding, margin;
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: UDeviceHelper.getScreenHeight(context) * 0.4,
-      width: UDeviceHelper.getScreenHeight(context) * 0.4,
+      height: height,
+      width: width,
+      padding: padding,
+      margin: margin,
+
       decoration: BoxDecoration(
-        color: UColors.white.withValues(alpha: 0.1),
-        borderRadius: BorderRadius.circular(500),
+        color: backgroundColor,
+        borderRadius: BorderRadius.circular(radius),
       ),
+      child: child,
     );
   }
 }

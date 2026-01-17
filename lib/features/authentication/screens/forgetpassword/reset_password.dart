@@ -43,7 +43,7 @@ class ResetPasswordScreen extends StatelessWidget {
               Text('example@gmail.com', style: Theme.of(context).textTheme.bodyMedium),
               SizedBox(height: USizes.spaceBtwItems),
               //..Subtitle..//
-              Text(UText.resetPasswordSubTitle, style: Theme.of(context).textTheme.bodySmall),
+              Text(UText.resetPasswordSubTitle, style: Theme.of(context).textTheme.bodySmall, textAlign: TextAlign.center,),
               SizedBox(height: USizes.spaceBtwSections),
               //..Done..//
               UElevatedButton(onPressed: (){}, child: Text(UText.resetPasswordDone)),

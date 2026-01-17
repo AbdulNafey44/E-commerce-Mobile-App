@@ -11,7 +11,7 @@ class UColors {
   static const Color colorSkyBlue = Color(0xFF81C3D7);
 
   // Primary Color
-  static const Color primary = colorBalticBlue;
+  static const Color primary = Color(0xFF16425B);
 
   // Text colors
   static const Color textPrimary = colorYaleBlue; // Darkest blue for best readability

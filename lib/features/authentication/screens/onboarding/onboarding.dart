@@ -2,7 +2,6 @@ import 'package:e_commerce/features/authentication/screens/onboarding/widget/onB
 import 'package:e_commerce/features/authentication/screens/onboarding/widget/onboardingdotnavigation.dart';
 import 'package:e_commerce/features/authentication/screens/onboarding/widget/onboardingnextbutton.dart';
 import 'package:e_commerce/features/authentication/screens/onboarding/widget/onboardingskipbutton.dart';
-import 'package:e_commerce/utils/constants/colors.dart';
 import 'package:e_commerce/utils/constants/images.dart';
 import 'package:e_commerce/utils/constants/texts.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +22,6 @@ class Onboarding extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(OnBoardingController());
     return Scaffold(
-      backgroundColor: UColors.colorAlabasterGrey,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: USizes.defaultSpace),
         child: Stack(

@@ -1,8 +1,11 @@
 import 'package:e_commerce/common/style/padding.dart';
 import 'package:e_commerce/common/widgets/button/elevated_button.dart';
+import 'package:e_commerce/features/authentication/screens/forgetpassword/reset_password.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:e_commerce/utils/constants/texts.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:iconsax/iconsax.dart';
 
 class ForgetPassword extends StatelessWidget {
@@ -13,23 +16,41 @@ class ForgetPassword extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
-        child:  Padding(
+        child: Padding(
           padding: UPading.screenPading,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-           Text(UText.forgetPassword, style: Theme.of(context).textTheme.headlineMedium),
-           Text(UText.forgetPasswordSubTitle, style: Theme.of(context).textTheme.bodySmall,),
-           SizedBox(height: USizes.spaceBtwSections,),
-              SizedBox(height: USizes.spaceBtwSections,),
-              TextFormField(
-                decoration: InputDecoration(
-                  labelText: UText.signUpEmail,
-                  prefixIcon: Icon(Iconsax.direct_right),
-                ),
+              //...Title...//
+              Text(
+                UText.forgetPassword,
+                style: Theme.of(context).textTheme.headlineMedium,
               ),
-              SizedBox(height: USizes.spaceBtwInputFields,),
-              UElevatedButton(onPressed: (){}, child: Text(UText.forgetPasswordSubmit)),
+              SizedBox(height: USizes.spaceBtwItems,),
+              ///subtitle...//
+              Text(
+                UText.forgetPasswordSubTitle,
+                style: Theme.of(context).textTheme.labelMedium,
+              ),
+              SizedBox(height: USizes.spaceBtwSections * 2),
+
+              ///...Email Field...//
+              Column(
+                children: [
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: UText.signUpEmail,
+                      prefixIcon: Icon(Iconsax.direct_right),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: USizes.spaceBtwInputFields),
+              ///...submit button...//
+              UElevatedButton(
+                onPressed: () => Get.to(() => ResetPasswordScreen()),
+                child: Text(UText.forgetPasswordSubmit),
+              ),
             ],
           ),
         ),

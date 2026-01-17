@@ -1,3 +1,5 @@
+import 'package:e_commerce/common/style/shadow.dart';
+import 'package:e_commerce/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -14,29 +16,26 @@ class USearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool dark = UHelperFunction.isDarkMode(context);
     return Positioned(
       bottom: 0,
       right: USizes.spaceBtwSections,
       left: USizes.spaceBtwSections,
       child: Container(
-        height: 60,
+        height: USizes.searchBarHeight,
         padding: EdgeInsetsGeometry.symmetric(horizontal: USizes.md),
+        //...box decoration ...//
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(USizes.borderRadiusLg),
-            color: UColors.white,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withValues(alpha: 0.1),
-                spreadRadius: 2.0,
-                blurRadius: 4.0,
-              ),
-
-            ]
+            color: dark ? UColors.dark :  UColors.light,
+            boxShadow: UShadow.searchBarShadow,
         ),
         child: Row(
           children: [
+            ///...icon...//
             Icon(Iconsax.search_normal, color: UColors.darkerGrey,),
             SizedBox(width: USizes.spaceBtwItems),
+            //...Title...///
             Text( UText.searchTitle , style: Theme.of(context).textTheme.bodySmall,),
           ],
         ),

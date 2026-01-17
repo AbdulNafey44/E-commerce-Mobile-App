@@ -36,7 +36,7 @@ class UCartCounterIcon extends StatelessWidget {
                 style: Theme.of(context).textTheme.labelLarge!
                     .apply(
                   fontSizeFactor: 0.8,
-                  color: dark ? UColors.dark : UColors.light,
+                  color: dark ? UColors.light : UColors.dark,
                 ),
               ),
             ),
