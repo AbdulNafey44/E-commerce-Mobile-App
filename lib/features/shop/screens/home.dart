@@ -1,30 +1,36 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:e_commerce/common/widgets/customeshape/circular_container.dart';
+import 'package:e_commerce/features/shop/controller/home/home_controller.dart';
 import 'package:e_commerce/utils/constants/colors.dart';
 import 'package:e_commerce/utils/constants/images.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:e_commerce/utils/constants/texts.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:iconsax/iconsax.dart';
 
-
+import '../../../common/style/shadow.dart';
 import '../../../common/widgets/images/rounded_image.dart';
+import '../../../common/widgets/products/product_card/product_card_vertical.dart';
+import '../../../common/widgets/text/section_heading.dart';
 import '../../../common/widgets/textfields/search_bar.dart';
 import '../../../utils/helpers/device_helpers.dart';
 import 'home/widgets/banners_dot_navigation.dart';
 import 'home/widgets/home_appbar.dart';
 import 'home/widgets/home_categories.dart';
 import 'home/widgets/primary_header_container.dart';
+import 'home/widgets/promo_slider.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(HomeController());
     return Scaffold(
       body: Column(
         children: [
-
           ///..upper part...//
           Stack(
             children: [
@@ -49,28 +55,25 @@ class HomeScreen extends StatelessWidget {
               USearchBar(),
             ],
           ),
-
           ///....lower part...//
-          ///..banners...//
+
           Padding(
             padding: const EdgeInsets.all(USizes.defaultSpace),
             child: Column(
               children: [
-                ///...Slider...///
-                CarouselSlider(
-                  items: [
-                    URoundedImage(imageUrl: UImages.homeBanner1),
-                    URoundedImage(imageUrl: UImages.homeBanner2),
-                    URoundedImage(imageUrl: UImages.homeBanner3),
-                    URoundedImage(imageUrl: UImages.homeBanner4),
-                    URoundedImage(imageUrl: UImages.homeBanner5),
-                  ],
-                  options: CarouselOptions(viewportFraction: 1.0)),
-                ///...///
-                SizedBox(height: USizes.spaceBtwItems),
-                BannersDotNavigation(),
+
+                ///..banners...//
+                UPromeSlider(banners: [UImages.homeBanner1, UImages.homeBanner2, UImages.homeBanner3, UImages.homeBanner4, UImages.homeBanner5],),
+
+                const SizedBox(height: USizes.spaceBtwSections),
+                USectionHeading(title: 'Popular Products', onPressed: (){},),
+                const SizedBox(height: USizes.spaceBtwSections),
+                /// vertical product card
+
+                UProductCard()
 
               ],
+
             ),
           ),
         ],
@@ -78,7 +81,6 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
 
 
 

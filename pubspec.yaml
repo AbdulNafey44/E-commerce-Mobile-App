@@ -35,6 +35,7 @@ flutter:
     - assets/logo/
     - assets/icons/categories/
     - assets/banners/
+    - assets/products/
 
 
   uses-material-design: true

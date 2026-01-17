@@ -15,4 +15,11 @@ class UShadow{
           ),
 
 ];
+
+  static List<BoxShadow> verticalProductShadow = [BoxShadow(
+    color: UColors.darkerGrey.withValues(alpha: 0.1),
+    blurRadius: 50,
+    spreadRadius: 7,
+    offset: const Offset(0, 2),
+  )];
 }
