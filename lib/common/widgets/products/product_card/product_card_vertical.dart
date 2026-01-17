@@ -10,6 +10,7 @@ import 'package:iconsax/iconsax.dart';
 
 import '../../../../utils/constants/sizes.dart';
 import '../../../style/shadow.dart';
+import '../../text/product_price_text.dart';
 import '../../text/product_title_text.dart';
 
 class UProductCard extends StatelessWidget {
@@ -83,7 +84,7 @@ class UProductCard extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('\$199', style: Theme.of(context).textTheme.headlineMedium, maxLines: 1, overflow: TextOverflow.ellipsis),
+                      UProductPriceText(),
                      ///add btn
                      Container(
                        width: USizes.iconLg * 1.2,
@@ -108,4 +109,6 @@ class UProductCard extends StatelessWidget {
     );
   }
 }
+
+
 

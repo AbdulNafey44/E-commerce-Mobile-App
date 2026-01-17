@@ -1,28 +1,33 @@
 import 'package:flutter/material.dart';
 
 import '../../../utils/constants/sizes.dart';
-import '../products/product_card/product_card_vertical.dart';
 
 class UGridLayout extends StatelessWidget {
   const UGridLayout({
     super.key,
+    required this.itemCount,
+    this.mainAxisCount = 288,
+    required this.itemBuilder,
   });
+
+  final int itemCount;
+  final double mainAxisCount;
+  final Widget Function(BuildContext context, int index) itemBuilder;
 
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-        physics: NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        itemCount: 10,
-        padding: EdgeInsets.zero,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,
-            mainAxisSpacing: USizes.gridViewSpacing,
-            crossAxisSpacing: USizes.gridViewSpacing,
-            mainAxisExtent: 288),
-
-        itemBuilder: (context, index){
-          return UProductCard();
-
-        });
+      physics: const NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      itemCount: itemCount, // ✅ fixed
+      padding: EdgeInsets.zero,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        mainAxisSpacing: USizes.gridViewSpacing,
+        crossAxisSpacing: USizes.gridViewSpacing,
+        mainAxisExtent: mainAxisCount,
+      ),
+      itemBuilder: itemBuilder, // ✅ correct
+    );
   }
 }

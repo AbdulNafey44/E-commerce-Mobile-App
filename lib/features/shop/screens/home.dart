@@ -71,8 +71,13 @@ class HomeScreen extends StatelessWidget {
                   USectionHeading(title: 'Popular Products', onPressed: (){},),
                   const SizedBox(height: USizes.spaceBtwItems),
                   /// vertical product card
-        
-                  UGridLayout()
+                 /// GridView of Product Card
+                  UGridLayout(
+                    itemCount: 6,
+                      itemBuilder: (context, index) {
+                        return UProductCard();
+                      },
+                  ),
         
                 ],
         
