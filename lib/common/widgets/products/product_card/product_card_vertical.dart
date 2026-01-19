@@ -10,8 +10,6 @@ import 'package:iconsax/iconsax.dart';
 
 import '../../../../utils/constants/sizes.dart';
 import '../../../style/shadow.dart';
-import '../../text/brand_title_text.dart';
-import '../../text/brand_title_with_verify_icon.dart';
 import '../../text/product_price_text.dart';
 import '../../text/product_title_text.dart';
 
@@ -44,7 +42,7 @@ class UProductCard extends StatelessWidget {
               child: Stack(
                 children: [
                   /// thumbnail
-                 URoundedImage(imageUrl: UImages.productImage1,),
+                  URoundedImage(imageUrl: UImages.productImage1,),
                   ///discount tag
                   Positioned(
                     top: 12.0,
@@ -57,9 +55,9 @@ class UProductCard extends StatelessWidget {
                   ),
                   ///Favourite btn
                   Positioned(
-                      right: 0,
-                      top: 0,
-                      child: UCircularIcon(icon: Iconsax.heart5, color: Colors.red),
+                    right: 0,
+                    top: 0,
+                    child: UCircularIcon(icon: Iconsax.heart5, color: Colors.red),
                   ),
                 ],
               ),
@@ -73,36 +71,37 @@ class UProductCard extends StatelessWidget {
                   ///product title
                   UProductTitleText(title: 'Blue Bata Shoes', smallSize: true),
                   SizedBox(height: USizes.spaceBtwItems / 2,),
-                 ///product brand
-                  UBrandTitleWithverifyIcon(title: 'bata'),
+                  ///brand brand
+                  Row(
+                    children: [
+                      Text('Bata', style: Theme.of(context).textTheme.labelMedium, maxLines: 1, overflow: TextOverflow.ellipsis),
+                      SizedBox(width: USizes.xs),
+                      Icon(Iconsax.verify5, color: UColors.primary, size: USizes.iconXs),
+                    ],
+                  ),
 
-
+                  ///...product price ...//
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      UProductPriceText(price: '120',),
+                      ///add btn
+                      Container(
+                        width: USizes.iconLg * 1.2,
+                        height: USizes.iconLg * 1.2,
+                        decoration: BoxDecoration(
+                            color: UColors.primary,
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(USizes.cardRadiusMd),
+                              bottomRight: Radius.circular(USizes.productImageRadius),
+                            )
+                        ),
+                        child: Icon(Iconsax.add, color: UColors.white),
+                      )
+                    ],
+                  )
                 ],
               ),
-            ),
-            Spacer(),
-            ///...product price ...//
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: USizes.sm),
-                  child: UProductPriceText(price: '120',),
-                ),
-                ///add btn
-                Container(
-                  width: USizes.iconLg * 1.2,
-                  height: USizes.iconLg * 1.2,
-                  decoration: BoxDecoration(
-                      color: UColors.primary,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(USizes.cardRadiusMd),
-                        bottomRight: Radius.circular(USizes.productImageRadius),
-                      )
-                  ),
-                  child: Icon(Iconsax.add, color: UColors.white),
-                )
-              ],
             )
           ],
         ),
@@ -110,10 +109,3 @@ class UProductCard extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
