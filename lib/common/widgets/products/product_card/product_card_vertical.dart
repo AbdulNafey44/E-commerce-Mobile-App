@@ -80,28 +80,33 @@ class UProductCard extends StatelessWidget {
                     ],
                   ),
 
-                  ///...product price ...//
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      UProductPriceText(),
-                     ///add btn
-                     Container(
-                       width: USizes.iconLg * 1.2,
-                       height: USizes.iconLg * 1.2,
-                       decoration: BoxDecoration(
-                         color: UColors.primary,
-                         borderRadius: BorderRadius.only(
-                           topLeft: Radius.circular(USizes.cardRadiusMd),
-                           bottomRight: Radius.circular(USizes.productImageRadius),
-                         )
-                       ),
-                       child: Icon(Iconsax.add, color: UColors.white),
-                     )
-                    ],
-                  )
+
                 ],
               ),
+            ),
+            Spacer(),
+            ///...product price ...//
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: USizes.sm),
+                  child: UProductPriceText(price: '120',),
+                ),
+                ///add btn
+                Container(
+                  width: USizes.iconLg * 1.2,
+                  height: USizes.iconLg * 1.2,
+                  decoration: BoxDecoration(
+                      color: UColors.primary,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(USizes.cardRadiusMd),
+                        bottomRight: Radius.circular(USizes.productImageRadius),
+                      )
+                  ),
+                  child: Icon(Iconsax.add, color: UColors.white),
+                )
+              ],
             )
           ],
         ),
