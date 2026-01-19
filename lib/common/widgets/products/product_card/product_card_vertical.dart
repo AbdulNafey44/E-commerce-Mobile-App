@@ -10,6 +10,8 @@ import 'package:iconsax/iconsax.dart';
 
 import '../../../../utils/constants/sizes.dart';
 import '../../../style/shadow.dart';
+import '../../text/brand_title_text.dart';
+import '../../text/brand_title_with_verify_icon.dart';
 import '../../text/product_price_text.dart';
 import '../../text/product_title_text.dart';
 
@@ -71,14 +73,8 @@ class UProductCard extends StatelessWidget {
                   ///product title
                   UProductTitleText(title: 'Blue Bata Shoes', smallSize: true),
                   SizedBox(height: USizes.spaceBtwItems / 2,),
-                 ///brand brand
-                  Row(
-                    children: [
-                      Text('Bata', style: Theme.of(context).textTheme.labelMedium, maxLines: 1, overflow: TextOverflow.ellipsis),
-                      SizedBox(width: USizes.xs),
-                      Icon(Iconsax.verify5, color: UColors.primary, size: USizes.iconXs),
-                    ],
-                  ),
+                 ///product brand
+                  UBrandTitleWithverifyIcon(title: 'bata'),
 
 
                 ],
@@ -114,6 +110,10 @@ class UProductCard extends StatelessWidget {
     );
   }
 }
+
+
+
+
 
 
 
