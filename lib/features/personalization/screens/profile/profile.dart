@@ -1,9 +1,13 @@
 import 'package:e_commerce/common/widgets/customeshape/primary_header_container.dart';
 import 'package:e_commerce/common/widgets/images/circular_image.dart';
+import 'package:e_commerce/common/widgets/text/section_heading.dart';
 import 'package:e_commerce/features/personalization/screens/profile/widgets/profile_primary_header.dart';
+import 'package:e_commerce/features/personalization/screens/profile/widgets/settings_menu_tile.dart';
+import 'package:e_commerce/features/personalization/screens/profile/widgets/user_profile_tile.dart';
 import 'package:e_commerce/utils/constants/images.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -13,11 +17,21 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          UProfilePrimaryHeader()
+          UProfilePrimaryHeader(),
+          UserProfileTile(),
+          /// Account Setting heading
+          USectionHeading(title: 'Account Settings', showActionButton: false,),
+
+          /// setting menu
+          SettingProfileTile()
         ],
       ),
     );
   }
 }
+
+
+
+
 
 
