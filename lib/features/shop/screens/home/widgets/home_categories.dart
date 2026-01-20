@@ -1,7 +1,6 @@
 import 'package:e_commerce/utils/constants/images.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../common/widgets/customeshape/circular_container.dart';
 import '../../../../../common/widgets/imageText/vertical_image_text.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';

@@ -6,12 +6,17 @@
   static const String onboarding2Animation = 'assets/animations/cart.json';
   static const String onboarding3Animations= 'assets/animations/delivery.json';
 
-
+  // logos
+  static const String profileLogo = 'assets/logo/profile.png';
   static const String facebookIcon = 'assets/logo/facebook-icon.png';
   static const String googleIcon= 'assets/logo/google-icon.png';
 
   static const String accountCreationImage = 'assets/images/account_created.png';
   static const String mailSentImage = 'assets/images/mail_illustration.png';
+
+
+
+
 
 
   // categories icons

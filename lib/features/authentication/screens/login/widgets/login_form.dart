@@ -3,7 +3,6 @@ import 'package:e_commerce/features/authentication/screens/signup/signup.dart';
 import 'package:e_commerce/navigation_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../../../../common/widgets/button/elevated_button.dart';
 import '../../../../../utils/constants/sizes.dart';

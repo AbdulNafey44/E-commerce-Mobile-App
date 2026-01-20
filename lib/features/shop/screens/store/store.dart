@@ -1,28 +1,12 @@
-import 'package:e_commerce/common/widgets/appbar/appbar.dart';
-import 'package:e_commerce/common/widgets/customeshape/rounded_container.dart';
-import 'package:e_commerce/common/widgets/images/rounded_image.dart';
-import 'package:e_commerce/common/widgets/layouts/grid_layout.dart';
-import 'package:e_commerce/common/widgets/products/cart/cart_counter_icon.dart';
-import 'package:e_commerce/common/widgets/products/product_card/product_card_vertical.dart';
-import 'package:e_commerce/common/widgets/text/brand_title_with_verify_icon.dart';
 import 'package:e_commerce/common/widgets/text/section_heading.dart';
 import 'package:e_commerce/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:e_commerce/features/shop/screens/store/widgets/store_primary_header.dart';
-import 'package:e_commerce/utils/constants/enum.dart';
-import 'package:e_commerce/utils/constants/images.dart';
-import 'package:e_commerce/utils/helpers/device_helpers.dart';
 import 'package:e_commerce/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../common/widgets/appbar/tabbar.dart';
 import '../../../../common/widgets/brands/brand_card.dart';
-import '../../../../common/widgets/brands/brand_showcase.dart';
-import '../../../../common/widgets/textfields/search_bar.dart';
-import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
-import '../home/widgets/home_appbar.dart';
-import '../home/widgets/home_categories.dart';
-import '../home/widgets/primary_header_container.dart';
 
 class StoreScreen extends StatelessWidget {
   const StoreScreen({super.key});
@@ -40,7 +24,7 @@ class StoreScreen extends StatelessWidget {
                 automaticallyImplyLeading: false,
                 pinned: true,
                 floating: false,
-                expandedHeight: 320,
+                expandedHeight: 340,
                 flexibleSpace: SingleChildScrollView(
                   child: Column(
                     children: [
@@ -52,7 +36,7 @@ class StoreScreen extends StatelessWidget {
                         child: Column(
                           children: [
                             USectionHeading(title: 'Brands'),
-                  
+
                             /// brand card
                             SizedBox(height: USizes.spaceBtwItems),
                             SizedBox(
@@ -63,7 +47,8 @@ class StoreScreen extends StatelessWidget {
                                 itemCount: 10,
                                 shrinkWrap: true,
                                 scrollDirection: Axis.horizontal,
-                                itemBuilder: (context, index) => UBrandCard(),
+                                itemBuilder: (context, index) => SizedBox( width: USizes.brandCardWidth,
+                                    child: UBrandCard()),
                               ),
                             ),
                           ],
@@ -87,20 +72,15 @@ class StoreScreen extends StatelessWidget {
           },
           body: TabBarView(
             children: [
-           UCategoryTab(),
-           UCategoryTab(),
-           UCategoryTab(),
-           UCategoryTab(),
-           UCategoryTab(),
-            ],),
+              UCategoryTab(),
+              UCategoryTab(),
+              UCategoryTab(),
+              UCategoryTab(),
+              UCategoryTab(),
+            ],
+          ),
         ),
       ),
     );
   }
 }
-
-
-
-
-
-

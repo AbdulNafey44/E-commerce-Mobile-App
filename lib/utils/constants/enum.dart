@@ -1,2 +1,2 @@
 
-enum TextSize {small, medium, large}
+enum TextSizes {small, medium, large}

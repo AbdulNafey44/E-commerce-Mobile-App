@@ -14,7 +14,7 @@ class UBrandTitleWithverifyIcon extends StatelessWidget {
     this.textColor,
     this.iconColor = UColors.primary,
     this.textAlign= TextAlign.center,
-    this.brandTextSize= TextSize.small,
+    this.brandTextSize= TextSizes.small,
   });
 
   final String title;
@@ -22,23 +22,21 @@ class UBrandTitleWithverifyIcon extends StatelessWidget {
   final int maxLines;
   final Color? textColor, iconColor;
   final TextAlign? textAlign;
-  final TextSize brandTextSize;
+  final TextSizes brandTextSize;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Flexible(
-          child: UBrandTitleText(
-            title: title,
-            maxLines: maxLines,
-            textAlign: textAlign,
-            brandTextSize: brandTextSize,
-            color: textColor,
-          ),
+        UBrandTitleText(
+          title: title,
+          maxLines: maxLines,
+          textAlign: textAlign,
+          brandTextSize: brandTextSize,
+          color: textColor,
         ),
-        SizedBox(width: USizes.xs),
+        SizedBox(width: USizes.sm,),
         Icon(Iconsax.verify5, color: UColors.primary, size: USizes.iconXs),
       ],
     );

@@ -3,7 +3,6 @@ import 'package:e_commerce/features/shop/controller/home/home_controller.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../common/widgets/images/rounded_image.dart';
-import '../../../../../utils/constants/images.dart';
 import '../../../../../utils/constants/sizes.dart';
 import 'banners_dot_navigation.dart';
 

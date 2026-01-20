@@ -23,13 +23,18 @@ class UCategoryTab extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: USizes.defaultSpace),
           child: Column(
             children: [
+              ///brand show case 1
               UBrandShowCase(images: [UImages.productImage47, UImages.productImage43, UImages.productImage7]),
+              ///brand show case 2
               UBrandShowCase(images: [UImages.productImage47, UImages.productImage43, UImages.productImage7]),
               SizedBox(height: USizes.spaceBtwItems),
+              /// you might like heading
               USectionHeading(title: 'You might like', onPressed: (){},),
-              UGridLayout(itemCount: 10, itemBuilder: (context, index) {
+              /// grid layout products
+              UGridLayout(itemCount: 6, itemBuilder: (context, index) {
                 return UProductCard();
-              },)
+              },),
+              SizedBox(height: USizes.spaceBtwSections,),
             ],
           ),
         )

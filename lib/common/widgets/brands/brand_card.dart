@@ -17,7 +17,6 @@ class UBrandCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return URoundedContainer(
-      width: USizes.brandCardWidth,
       height: USizes.brandCardHeight,
       showBorder: showBorder,
       padding: EdgeInsets.all(USizes.sm),
@@ -32,7 +31,7 @@ class UBrandCard extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 ///brand title & verify icon
-                UBrandTitleWithverifyIcon(title: 'Bata' , brandTextSize: TextSize.large),
+                UBrandTitleWithverifyIcon(title: 'Bata' , brandTextSize: TextSizes.large),
                 /// Text
                 Text('172 products', style: Theme.of(context).textTheme.labelMedium,overflow: TextOverflow.ellipsis,)
               ],

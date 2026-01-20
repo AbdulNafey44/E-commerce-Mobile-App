@@ -1,8 +1,10 @@
 import 'package:e_commerce/common/widgets/customeshape/rounded_container.dart';
 import 'package:e_commerce/common/widgets/icons/circular_icon.dart';
 import 'package:e_commerce/common/widgets/images/rounded_image.dart';
-import 'package:e_commerce/features/authentication/screens/signup/widgets/signup_form.dart';
+import 'package:e_commerce/common/widgets/text/brand_title_text.dart';
+import 'package:e_commerce/common/widgets/text/brand_title_with_verify_icon.dart';
 import 'package:e_commerce/utils/constants/colors.dart';
+import 'package:e_commerce/utils/constants/enum.dart';
 import 'package:e_commerce/utils/constants/images.dart';
 import 'package:e_commerce/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
@@ -32,17 +34,17 @@ class UProductCard extends StatelessWidget {
           color: dark ? UColors.darkerGrey : UColors.white,
         ),
         child: Column(
-
+         crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             URoundedContainer(
-              width: 180,
+              height: 180,
               padding:  const EdgeInsets.all(USizes.sm),
               backgroundColor: dark ? UColors.dark : UColors.light,
 
               child: Stack(
                 children: [
                   /// thumbnail
-                  URoundedImage(imageUrl: UImages.productImage1,),
+                  Center(child: URoundedImage(imageUrl: UImages.productImage15,)),
                   ///discount tag
                   Positioned(
                     top: 12.0,
@@ -66,7 +68,6 @@ class UProductCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: USizes.sm),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ///product title
                   UProductTitleText(title: 'Blue Bata Shoes', smallSize: true),
@@ -74,9 +75,7 @@ class UProductCard extends StatelessWidget {
                   ///brand brand
                   Row(
                     children: [
-                      Text('Bata', style: Theme.of(context).textTheme.labelMedium, maxLines: 1, overflow: TextOverflow.ellipsis),
-                      SizedBox(width: USizes.xs),
-                      Icon(Iconsax.verify5, color: UColors.primary, size: USizes.iconXs),
+                      UBrandTitleWithverifyIcon(title: 'Bata'),
                     ],
                   ),
 

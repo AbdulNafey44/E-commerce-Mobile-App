@@ -2,7 +2,6 @@ import 'package:e_commerce/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 
 import '../../../utils/constants/colors.dart';
-import '../../../utils/constants/images.dart';
 import '../../../utils/constants/sizes.dart';
 import '../customeshape/rounded_container.dart';
 import 'brand_card.dart';

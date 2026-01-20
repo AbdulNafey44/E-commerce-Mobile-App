@@ -1,9 +1,6 @@
 import 'package:e_commerce/utils/constants/enum.dart';
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 
-import '../../../utils/constants/colors.dart';
-import '../../../utils/constants/sizes.dart';
 
 class UBrandTitleText extends StatelessWidget {
   const UBrandTitleText({
@@ -12,7 +9,7 @@ class UBrandTitleText extends StatelessWidget {
     required this.title,
     this.maxLines = 1,
     this.textAlign = TextAlign.center,
-    this.brandTextSize = TextSize.small,
+    this.brandTextSize = TextSizes.small,
   });
 
   final Color? color;
@@ -20,7 +17,7 @@ class UBrandTitleText extends StatelessWidget {
   final String title;
   final int maxLines;
   final TextAlign? textAlign;
-  final TextSize brandTextSize;
+  final TextSizes brandTextSize;
 
   @override
   Widget build(BuildContext context) {
@@ -31,11 +28,11 @@ class UBrandTitleText extends StatelessWidget {
           title,
           maxLines: maxLines,
           overflow: TextOverflow.ellipsis,
-          style: brandTextSize == TextSize.small
+          style: brandTextSize == TextSizes.small
               ? Theme.of(context).textTheme.labelMedium!.apply(color: color)
-              : brandTextSize == TextSize.medium
+              : brandTextSize == TextSizes.medium
               ? Theme.of(context).textTheme.bodyLarge!.apply(color: color)
-              : brandTextSize == TextSize.large
+              : brandTextSize == TextSizes.large
               ? Theme.of(context).textTheme.titleLarge!.apply(color: color)
               : Theme.of(context).textTheme.bodyMedium!.apply(color: color),
         ),
