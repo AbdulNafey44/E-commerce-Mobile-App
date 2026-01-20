@@ -1,3 +1,4 @@
+import 'package:e_commerce/common/widgets/images/user_profile_logo.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../common/widgets/customeshape/primary_header_container.dart';
@@ -25,13 +26,11 @@ class UProfilePrimaryHeader extends StatelessWidget {
             left: 0,
             right: 0,
             child: Center(
-              child: UCircularImage(image: UImages.profileLogo,
-                height: 120.0,
-                width: 120.0,
-              ),
+              child: UserProfileLogo(),
             )),
 
       ],
     );
   }
 }
+

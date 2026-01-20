@@ -15,16 +15,32 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          UProfilePrimaryHeader(),
-          UserProfileTile(),
-          /// Account Setting heading
-          USectionHeading(title: 'Account Settings', showActionButton: false,),
-
-          /// setting menu
-          SettingProfileTile()
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            UProfilePrimaryHeader(),
+           Padding(
+             padding: const EdgeInsets.all(USizes.defaultSpace ),
+             child: Column(
+               children: [
+                 UserProfileTile(),
+                 SizedBox(height: USizes.spaceBtwItems,),
+                 /// Account Setting heading
+                 USectionHeading(title: 'Account Settings', showActionButton: false,),
+                 /// setting menu
+                 SettingProfileTile(icon: Iconsax.safe_home, title: 'My Addresses', subTitle: 'Set shopping delivery addresses',),
+                 SettingProfileTile(icon: Iconsax.shopping_cart, title: 'My Cart', subTitle: 'Add, remove products and move to checkout',),
+                 SettingProfileTile(icon: Iconsax.bag_tick, title: 'My Orders', subTitle: 'In-progress and Completed Orders',),
+                 SizedBox(height: USizes.spaceBtwSections * 2),
+                 SizedBox(
+                     width: double.infinity,
+                     child: OutlinedButton(onPressed: (){}, child: Text('Log Out'))),
+                 SizedBox(height: USizes.spaceBtwSections),
+               ],
+             ),
+           )
+          ],
+        ),
       ),
     );
   }

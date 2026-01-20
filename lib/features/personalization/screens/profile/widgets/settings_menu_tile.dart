@@ -1,19 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
-
 class SettingProfileTile extends StatelessWidget {
   const SettingProfileTile({
     super.key,
+    required this.title,
+    required this.subTitle,
+    required this.icon,
   });
+
+  final String title, subTitle;
+  final IconData icon;
+
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Icon(Iconsax.home),
-      title: Text('My Addresses', style: Theme.of(context).textTheme.titleMedium),
-      subtitle: Text('Set Shopping Deliver Address', style: Theme.of(context).textTheme.labelMedium),
-
+      leading: Icon(icon),
+      title: Text(
+        title,
+        style: Theme.of(context).textTheme.titleMedium,
+      ),
+      subtitle: Text(
+        subTitle,
+        style: Theme.of(context).textTheme.labelMedium,
+      ),
     );
   }
 }
