@@ -4,7 +4,6 @@ import '../../../../../common/widgets/customeshape/circular_container.dart';
 import '../../../../../common/widgets/customeshape/clipper/rounded_edges.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';
-import '../../../../../utils/helpers/device_helpers.dart';
 
 class UPrimaryHeaderContainer extends StatelessWidget {
   const UPrimaryHeaderContainer({
