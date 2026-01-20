@@ -1,3 +1,4 @@
+import 'package:e_commerce/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -13,13 +14,11 @@ import '../../../../../utils/constants/sizes.dart';
 class UProductThumbnailAndSlider extends StatelessWidget {
   const UProductThumbnailAndSlider({
     super.key,
-    required this.dark,
   });
-
-  final bool dark;
 
   @override
   Widget build(BuildContext context) {
+    final bool dark = UHelperFunction.isDarkMode(context);
     return Container(
       color: dark? UColors.dark: UColors.light,
       child: Stack(
