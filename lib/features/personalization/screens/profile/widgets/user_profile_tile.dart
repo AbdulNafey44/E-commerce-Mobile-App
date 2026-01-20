@@ -17,7 +17,7 @@ class UserProfileTile extends StatelessWidget {
       contentPadding: EdgeInsets.zero,
       title: Text('Abdul Naffy', style: Theme.of(context).textTheme.headlineSmall,),
       subtitle: Text('example@gmail.com',style: Theme.of(context).textTheme.bodyMedium),
-      trailing: IconButton(onPressed: () => Get.to((EditProfileScreen())), icon: Icon(Iconsax.edit)),
+      trailing: IconButton(onPressed: () => Get.to(()=>(EditProfileScreen())), icon: Icon(Iconsax.edit)),
     );
   }
 }
