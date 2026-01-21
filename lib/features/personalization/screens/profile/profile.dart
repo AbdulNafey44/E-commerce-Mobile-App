@@ -1,13 +1,15 @@
-import 'package:e_commerce/common/widgets/customeshape/primary_header_container.dart';
-import 'package:e_commerce/common/widgets/images/circular_image.dart';
+
 import 'package:e_commerce/common/widgets/text/section_heading.dart';
 import 'package:e_commerce/features/personalization/screens/profile/widgets/profile_primary_header.dart';
 import 'package:e_commerce/features/personalization/screens/profile/widgets/settings_menu_tile.dart';
 import 'package:e_commerce/features/personalization/screens/profile/widgets/user_profile_tile.dart';
-import 'package:e_commerce/utils/constants/images.dart';
+
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+
+import '../addresses/address.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -28,9 +30,9 @@ class ProfileScreen extends StatelessWidget {
                  /// Account Setting heading
                  USectionHeading(title: 'Account Settings', showActionButton: false,),
                  /// setting menu
-                 SettingProfileTile(icon: Iconsax.safe_home, title: 'My Addresses', subTitle: 'Set shopping delivery addresses',),
-                 SettingProfileTile(icon: Iconsax.shopping_cart, title: 'My Cart', subTitle: 'Add, remove products and move to checkout',),
-                 SettingProfileTile(icon: Iconsax.bag_tick, title: 'My Orders', subTitle: 'In-progress and Completed Orders',),
+                 SettingProfileTile(icon: Iconsax.safe_home, title: 'My Addresses', subTitle: 'Set shopping delivery addresses',onTap: ()=> Get.to(AddressScreen()),),
+                 SettingProfileTile(icon: Iconsax.shopping_cart, title: 'My Cart', subTitle: 'Add, remove products and move to checkout',onTap: (){},),
+                 SettingProfileTile(icon: Iconsax.bag_tick, title: 'My Orders', subTitle: 'In-progress and Completed Orders',onTap: (){},),
                  SizedBox(height: USizes.spaceBtwSections * 2),
                  SizedBox(
                      width: double.infinity,

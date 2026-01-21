@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:iconsax/iconsax.dart';
 
 class SettingProfileTile extends StatelessWidget {
@@ -6,24 +8,27 @@ class SettingProfileTile extends StatelessWidget {
     super.key,
     required this.title,
     required this.subTitle,
-    required this.icon,
+    required this.icon, required this.onTap,
   });
 
   final String title, subTitle;
   final IconData icon;
 
-
+ final VoidCallback onTap;
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: Icon(icon),
-      title: Text(
-        title,
-        style: Theme.of(context).textTheme.titleMedium,
-      ),
-      subtitle: Text(
-        subTitle,
-        style: Theme.of(context).textTheme.labelMedium,
+    return InkWell(
+      onTap: onTap,
+      child: ListTile(
+        leading: Icon(icon),
+        title: Text(
+          title,
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
+        subtitle: Text(
+          subTitle,
+          style: Theme.of(context).textTheme.labelMedium,
+        ),
       ),
     );
   }
