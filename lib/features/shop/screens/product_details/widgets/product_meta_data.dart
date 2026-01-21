@@ -59,6 +59,7 @@ class UProductMetaData extends StatelessWidget {
 
           Row(
             children: [
+              ///  product brand image with title
               UCircularImage(
                 padding: 0,
                 image: UImages.dariMoochLogo,width: 34.0,height: 34.0,),
