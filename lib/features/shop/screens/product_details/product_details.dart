@@ -7,6 +7,7 @@ import 'package:e_commerce/common/widgets/text/brand_title_with_verify_icon.dart
 import 'package:e_commerce/common/widgets/text/product_price_text.dart';
 import 'package:e_commerce/common/widgets/text/product_title_text.dart';
 import 'package:e_commerce/common/widgets/text/section_heading.dart';
+import 'package:e_commerce/features/shop/screens/product_details/widgets/bottom_add_to_cart.dart';
 import 'package:e_commerce/features/shop/screens/product_details/widgets/product_attributes.dart';
 import 'package:e_commerce/features/shop/screens/product_details/widgets/product_meta_data.dart';
 import 'package:e_commerce/features/shop/screens/product_details/widgets/product_thumbnail_and_slider.dart';
@@ -71,7 +72,7 @@ class ProductDetailsScreen extends StatelessWidget {
         ),
       ),
       /// [Bottom Navigation]
-      bottomNavigationBar: ,
+      bottomNavigationBar: UBottomAddToCart() ,
     );
   }
 }

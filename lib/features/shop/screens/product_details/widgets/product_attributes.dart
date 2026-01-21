@@ -116,30 +116,6 @@ class UProductAttributes extends StatelessWidget {
                     text: 'Yellow',
                     selected: false,
                     onSelected: (value) {}),
-                UChoiceChip(
-                    text: 'Red',
-                    selected: true,
-                    onSelected: (value) {}),
-                UChoiceChip(
-                    text: 'Blue',
-                    selected: false,
-                    onSelected: (value) {}),
-                UChoiceChip(
-                    text: 'Yellow',
-                    selected: false,
-                    onSelected: (value) {}),
-                UChoiceChip(
-                    text: 'Red',
-                    selected: true,
-                    onSelected: (value) {}),
-                UChoiceChip(
-                    text: 'Blue',
-                    selected: false,
-                    onSelected: (value) {}),
-                UChoiceChip(
-                    text: 'Yellow',
-                    selected: false,
-                    onSelected: (value) {}),
               ],
             ),
           ],
