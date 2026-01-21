@@ -18,9 +18,7 @@ class UProductMetaData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: UPading.screenPading,
-      child: Column(
+    return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           /// sale tag , sale price , actual price and share button
@@ -69,7 +67,6 @@ class UProductMetaData extends StatelessWidget {
           )
 
         ],
-      ),
     );
   }
 }
