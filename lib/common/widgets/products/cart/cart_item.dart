@@ -1,3 +1,4 @@
+import 'package:e_commerce/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../utils/constants/colors.dart';
@@ -10,13 +11,14 @@ import '../../text/product_title_text.dart';
 class UCartItom extends StatelessWidget {
   const UCartItom({
     super.key,
-    required this.dark,
+
   });
 
-  final bool dark;
+
 
   @override
   Widget build(BuildContext context) {
+    final bool dark = UHelperFunction.isDarkMode(context);
     return Row(
       children: [
         /// Product Image

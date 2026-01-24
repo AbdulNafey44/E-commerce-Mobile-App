@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
+import '../../../features/shop/screens/brands/brand_products.dart';
 import '../../../utils/constants/enum.dart';
 import '../../../utils/constants/images.dart';
 import '../../../utils/constants/sizes.dart';
@@ -12,32 +15,37 @@ class UBrandCard extends StatelessWidget {
   const UBrandCard({
     super.key,
     this.showBorder = true,
+     this.onTap,
   });
   final bool showBorder ;
+  final VoidCallback? onTap;
   @override
   Widget build(BuildContext context) {
-    return URoundedContainer(
-      height: USizes.brandCardHeight,
-      showBorder: showBorder,
-      padding: EdgeInsets.all(USizes.sm),
-      backgroundColor: Colors.transparent,
-      child: Row(
-        children: [
-          ///brand image
-          Flexible(child: URoundedImage(imageUrl: UImages.bataLogo)),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ///brand title & verify icon
-                UBrandTitleWithverifyIcon(title: 'Bata' , brandTextSize: TextSizes.large),
-                /// Text
-                Text('172 products', style: Theme.of(context).textTheme.labelMedium,overflow: TextOverflow.ellipsis,)
-              ],
+    return GestureDetector(
+      onTap: onTap ,
+      child: URoundedContainer(
+        height: USizes.brandCardHeight,
+        showBorder: showBorder,
+        padding: EdgeInsets.all(USizes.sm),
+        backgroundColor: Colors.transparent,
+        child: Row(
+          children: [
+            ///brand image
+            Flexible(child: URoundedImage(imageUrl: UImages.bataLogo)),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ///brand title & verify icon
+                  UBrandTitleWithverifyIcon(title: 'Bata' , brandTextSize: TextSizes.large),
+                  /// Text
+                  Text('172 products', style: Theme.of(context).textTheme.labelMedium,overflow: TextOverflow.ellipsis,)
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

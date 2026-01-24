@@ -37,11 +37,12 @@ class UText{
   static const String orSigupWith = 'Or Sign up With';
   static const String forgetPasswordSubTitle = 'No worries! Enter your registered email address, and we’ll help you reset your password';
   static const String forgetPasswordSubmit = 'Submit';
-
+  ///
   static const String resetPasswordTitle = 'Password Reset Email Sent';
   static const String resetPasswordSubTitle = '  We’ve sent a password reset link to your email. Please check your inbox and follow the instructions to reset your password';
   static const String resetPasswordResendEmail = ' Resend Email';
   static const String resetPasswordDone = 'Done';
+  static const String uContinue = 'Continue';
 
   static const String searchTitle = 'Search in store';
 

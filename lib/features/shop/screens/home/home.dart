@@ -8,6 +8,7 @@ import '../../../../common/widgets/layouts/grid_layout.dart';
 import '../../../../common/widgets/products/product_card/product_card_vertical.dart';
 import '../../../../common/widgets/text/section_heading.dart';
 import '../../../../common/widgets/textfields/search_bar.dart';
+import '../all_products/all_products.dart';
 import 'widgets/home_appbar.dart';
 import 'widgets/home_categories.dart';
 import '../../../../common/widgets/customeshape/primary_header_container.dart';
@@ -59,7 +60,7 @@ class HomeScreen extends StatelessWidget {
                   UPromeSlider(banners: [UImages.homeBanner1, UImages.homeBanner2, UImages.homeBanner3, UImages.homeBanner4, UImages.homeBanner5],),
         
                   const SizedBox(height: USizes.spaceBtwItems),
-                  USectionHeading(title: 'Popular Products', onPressed: (){},),
+                  USectionHeading(title: 'Popular Products', onPressed: () => Get.to(AllProductsScreen()),),
                   const SizedBox(height: USizes.spaceBtwItems),
                   /// vertical product card
                  /// GridView of Product Card

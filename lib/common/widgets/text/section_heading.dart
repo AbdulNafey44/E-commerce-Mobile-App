@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+
+import '../../../features/shop/screens/all_products/all_products.dart';
 
 class USectionHeading extends StatelessWidget {
   const USectionHeading({

@@ -1,14 +1,15 @@
 import 'package:e_commerce/features/authentication/screens/login/login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class OnBoardingController extends GetxController{
 
   static OnBoardingController get instance => Get.find();
 
+  final storage = GetStorage();
 
-
-  //variables
+  ///variables
  final pageController = PageController();
  RxInt currentIndex = 0.obs ;
 
@@ -17,14 +18,15 @@ void updatePageIndicator (index){
   currentIndex.value = index ;
 }
 
-  //// jump to specific dot selected page
+  /// jump to specific dot selected page
 void dotNavigationClick(index){
   currentIndex.value = index ;
   pageController.jumpToPage(index);
 }
-  //update current index and jump to the next page
+  ///update current index and jump to the next page
 void nextPage(){
 if (currentIndex.value == 2) {
+  storage.write('isFirstTime', false);
   Get.offAll(() => LoginScreen());
   return ;
 }
@@ -32,7 +34,7 @@ if (currentIndex.value == 2) {
   currentIndex.value++;
   pageController.jumpToPage(currentIndex.value);
 }
-  //update current index and jump to last page
+  ///update current index and jump to last page
 void skipPage(){
   currentIndex.value = 2;
   pageController.jumpToPage(currentIndex.value);

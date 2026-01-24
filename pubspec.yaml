@@ -21,6 +21,16 @@ dependencies:
   carousel_slider: ^5.1.1
   readmore: ^3.0.0
 
+  get_storage: ^2.1.1
+  connectivity_plus: ^7.0.0
+
+  #firebase
+  firebase_core: ^4.4.0
+  firebase_analytics: ^12.1.1
+  firebase_auth: ^6.1.4
+  cloud_firestore: ^6.1.2
+  google_sign_in: ^7.2.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -38,6 +48,7 @@ flutter:
     - assets/banners/
     - assets/products/
     - assets/brands/
+    - assets/icons/payment_methods/
 
 
   uses-material-design: true

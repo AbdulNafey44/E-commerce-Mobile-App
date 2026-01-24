@@ -30,7 +30,7 @@ class UPromoCodeField extends StatelessWidget {
           Flexible(
             child: TextFormField(
               decoration: InputDecoration(
-                  hintText: 'Have a promo code?, enter here',
+                  hintText: 'Have a promo code? Enter here',
                   border: InputBorder.none,
                   focusedBorder: InputBorder.none,
                   enabledBorder: InputBorder.none,

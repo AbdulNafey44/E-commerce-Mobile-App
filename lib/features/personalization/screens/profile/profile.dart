@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../shop/screens/orders/order.dart';
 import '../addresses/address.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -32,7 +33,7 @@ class ProfileScreen extends StatelessWidget {
                  /// setting menu
                  SettingProfileTile(icon: Iconsax.safe_home, title: 'My Addresses', subTitle: 'Set shopping delivery addresses',onTap: ()=> Get.to(AddressScreen()),),
                  SettingProfileTile(icon: Iconsax.shopping_cart, title: 'My Cart', subTitle: 'Add, remove products and move to checkout',onTap: (){},),
-                 SettingProfileTile(icon: Iconsax.bag_tick, title: 'My Orders', subTitle: 'In-progress and Completed Orders',onTap: (){},),
+                 SettingProfileTile(icon: Iconsax.bag_tick, title: 'My Orders', subTitle: 'In-progress and Completed Orders',onTap: ()=>Get.to(OrderScreen()),),
                  SizedBox(height: USizes.spaceBtwSections * 2),
                  SizedBox(
                      width: double.infinity,
