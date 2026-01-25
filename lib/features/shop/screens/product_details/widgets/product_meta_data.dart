@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../common/style/padding.dart';
+
 import '../../../../../common/widgets/customeshape/rounded_container.dart';
 import '../../../../../common/widgets/images/circular_image.dart';
 import '../../../../../common/widgets/text/brand_title_with_verify_icon.dart';

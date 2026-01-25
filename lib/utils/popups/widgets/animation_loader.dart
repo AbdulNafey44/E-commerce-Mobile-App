@@ -1,4 +1,4 @@
-import 'package:e_commerce/utils/constants/images.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
@@ -18,7 +18,7 @@ class UAnimationLoader extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           /// Animation
-          Lottie.asset(UImages.loadingAnimation, width: Get.width * 0.8),
+          Lottie.asset('assets/animations/loading.json', width: Get.width * 0.8),
           const SizedBox(height: USizes.defaultSpace),
 
           /// Title

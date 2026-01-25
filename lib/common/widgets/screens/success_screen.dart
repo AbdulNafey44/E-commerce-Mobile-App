@@ -6,7 +6,8 @@ import 'package:e_commerce/utils/helpers/device_helpers.dart';
 import 'package:flutter/material.dart';
 
 class SuccessScreen extends StatelessWidget {
-  const SuccessScreen({super.key, required this.title, required this.subTitle, required this.image, required this.onTap});
+  const SuccessScreen({super.key, required this.title, required this.subTitle, required this.image, required this.onTap,
+  });
 
   final String title, subTitle, image;
   final VoidCallback onTap;
@@ -33,7 +34,8 @@ class SuccessScreen extends StatelessWidget {
               SizedBox(height: USizes.spaceBtwSections),
 
               /// Continue
-              UElevatedButton(onPressed: onTap, child: Text(UText.uContinue))
+              UElevatedButton(onPressed: onTap, child: Text(UText.uContinue)),
+
             ],
           ),
         ),

@@ -2,8 +2,6 @@ import 'package:e_commerce/common/widgets/images/user_profile_logo.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../common/widgets/customeshape/primary_header_container.dart';
-import '../../../../../common/widgets/images/circular_image.dart';
-import '../../../../../utils/constants/images.dart';
 import '../../../../../utils/constants/sizes.dart';
 
 

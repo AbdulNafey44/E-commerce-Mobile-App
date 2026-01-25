@@ -37,15 +37,26 @@ class UText{
   static const String orSigupWith = 'Or Sign up With';
   static const String forgetPasswordSubTitle = 'No worries! Enter your registered email address, and we’ll help you reset your password';
   static const String forgetPasswordSubmit = 'Submit';
-  ///
+  /// password reset
   static const String resetPasswordTitle = 'Password Reset Email Sent';
   static const String resetPasswordSubTitle = '  We’ve sent a password reset link to your email. Please check your inbox and follow the instructions to reset your password';
   static const String resetPasswordResendEmail = ' Resend Email';
   static const String resetPasswordDone = 'Done';
   static const String uContinue = 'Continue';
+  static const String verifyemail= 'Verify your email address!';
 
   static const String searchTitle = 'Search in store';
 
   static const String categoriesTitle = 'Popular Categories';
+
+  // Verify Email Screen
+  static const String verifyEmailTitle = 'Verify your email address!';
+  static const String verifyEmailSubTitle = 'We’ve sent a verification link to your email. Please check your inbox and click the link to verify your account';
+  static const String resendEmail = 'Resend Email';
+
+  // Account Created Successfully Screen
+  static const String accountCreatedTitle = 'Your account successfully created';
+  static const String accountCreatedSubTitle = 'Congratulations! Your account has been successfully created. You can now explore all the amazing features, start personalizing your experience, and enjoy seamless access to our services. Let’s get started!';
+
 
 }

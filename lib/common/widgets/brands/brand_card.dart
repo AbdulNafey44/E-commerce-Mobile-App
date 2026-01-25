@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
-import '../../../features/shop/screens/brands/brand_products.dart';
 import '../../../utils/constants/enum.dart';
 import '../../../utils/constants/images.dart';
 import '../../../utils/constants/sizes.dart';

@@ -7,7 +7,6 @@ import 'package:e_commerce/features/shop/screens/checkout/widgets/billing_addres
 import 'package:e_commerce/features/shop/screens/checkout/widgets/billing_amount_section.dart';
 import 'package:e_commerce/features/shop/screens/checkout/widgets/billing_payment_section.dart';
 import 'package:e_commerce/navigation_menu.dart';
-import 'package:e_commerce/utils/constants/colors.dart';
 import 'package:e_commerce/utils/constants/images.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:e_commerce/utils/helpers/helper_function.dart';

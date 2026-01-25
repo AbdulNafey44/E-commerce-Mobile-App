@@ -14,6 +14,7 @@
 
   static const String accountCreationImage = 'assets/images/account_created.png';
   static const String mailSentImage = 'assets/images/mail_illustration.png';
+  static const String emailVerify = 'assets/images/mail_illustration.png';
 
 
 

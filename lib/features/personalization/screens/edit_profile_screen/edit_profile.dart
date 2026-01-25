@@ -1,7 +1,6 @@
 import 'package:e_commerce/common/style/padding.dart';
 import 'package:e_commerce/common/widgets/appbar/appbar.dart';
-import 'package:e_commerce/common/widgets/icons/circular_icon.dart';
-import 'package:e_commerce/common/widgets/images/user_profile_logo.dart';
+
 import 'package:e_commerce/common/widgets/text/section_heading.dart';
 import 'package:e_commerce/features/personalization/screens/edit_profile_screen/widgets/user_profile_with_edit_icon.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
