@@ -1,4 +1,5 @@
 import 'package:e_commerce/common/style/padding.dart';
+import 'package:e_commerce/features/authentication/controller/login/login_controller.dart';
 
 import 'package:e_commerce/features/authentication/screens/login/widgets/login_form.dart';
 import 'package:e_commerce/features/authentication/screens/login/widgets/login_header.dart';
@@ -8,6 +9,7 @@ import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:e_commerce/utils/constants/texts.dart';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 
 import '../../../../common/widgets/button/social_button.dart';
@@ -19,7 +21,7 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
+    Get.put(LoginController());
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
