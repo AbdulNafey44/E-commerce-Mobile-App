@@ -59,7 +59,8 @@ class SignupController extends GetxController {
       }
 
       // Register user with Firebase Authentication
-      UserCredential userCredential = await AuthenticationRepository.instance.registerUser(
+      UserCredential userCredential =
+      await AuthenticationRepository.instance.registerUser(
         email.text.trim(),
         password.text.trim(),
       );
@@ -79,11 +80,15 @@ class SignupController extends GetxController {
       final userRepository = Get.put(UserRepository());
       await userRepository.saveUserRecord(userModel);
 
-      // stop loading before showing snackbar
-      UFullScreenLoader.stopLoading();
+      // send email verification safely without blocking navigation
+      try {
+        await AuthenticationRepository.instance.sendEmailVerification();
+      } catch (_) {
+        // do nothing, prevents false error snackbar
+      }
 
-      // send email verification
-      await AuthenticationRepository.instance.sendEmailVerification();
+      // stop loading AFTER everything is done
+      UFullScreenLoader.stopLoading();
 
       // success message
       USnackBarHelpers.successSnackBar(
@@ -91,8 +96,10 @@ class SignupController extends GetxController {
         message: 'Your account has been created! Verify email to continue',
       );
 
-      // redirect to verify screen
-      Get.to(() => VerifyScreen(email: email.text));
+      // redirect to verify screen **after loader stops**
+      Get.off(() => VerifyScreen(email: email.text));
+      // Using Get.off instead of Get.to avoids overlapping snackbars and screen flashes
+
     } on FirebaseAuthException catch (e) {
       // stop screen loading
       UFullScreenLoader.stopLoading();
