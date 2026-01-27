@@ -1,3 +1,4 @@
+import 'package:e_commerce/features/personalization/controller/user_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -13,10 +14,11 @@ class UserProfileTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = userController.instance;
     return ListTile(
       contentPadding: EdgeInsets.zero,
-      title: Text('Abdul Naffy', style: Theme.of(context).textTheme.headlineSmall,),
-      subtitle: Text('example@gmail.com',style: Theme.of(context).textTheme.bodyMedium),
+      title: Obx(() => Text(controller.user.value.fullName, style: Theme.of(context).textTheme.headlineSmall,)),
+      subtitle:   Obx(() => Text(controller.user.value.email,style: Theme.of(context).textTheme.bodyMedium)),
       trailing: IconButton(onPressed: () => Get.to(()=>(EditProfileScreen())), icon: Icon(Iconsax.edit)),
     );
   }

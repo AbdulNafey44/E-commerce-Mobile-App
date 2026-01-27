@@ -2,6 +2,7 @@ import 'package:e_commerce/common/style/padding.dart';
 import 'package:e_commerce/common/widgets/appbar/appbar.dart';
 
 import 'package:e_commerce/common/widgets/text/section_heading.dart';
+import 'package:e_commerce/features/personalization/controller/user_controller.dart';
 import 'package:e_commerce/features/personalization/screens/edit_profile_screen/widgets/user_profile_with_edit_icon.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,7 @@ class EditProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = userController.instance;
     return Scaffold(
       appBar: UAppBar(
         showBackArrow: true,
@@ -36,8 +38,8 @@ class EditProfileScreen extends StatelessWidget {
                 showActionButton: false,
               ),
               /// Account Details
-              UserDetailRow(title: 'Name', value: 'Abdul Nafey', onTap: (){},),
-              UserDetailRow(title: 'username', value: 'naffy123', onTap: (){},),
+              UserDetailRow(title: 'Name', value: controller.user.value.fullName, onTap: (){},),
+              UserDetailRow(title: 'username', value: controller.user.value.username, onTap: (){},),
               SizedBox(height: USizes.spaceBtwItems),
               /// Dividor
               Divider(),
@@ -48,9 +50,9 @@ class EditProfileScreen extends StatelessWidget {
                 showActionButton: false,
               ),
               SizedBox(height: USizes.spaceBtwItems,),
-              UserDetailRow(title: 'User ID', value: '232345', onTap: (){},),
-              UserDetailRow(title: 'Email', value: 'naffy123', onTap: (){},),
-              UserDetailRow(title: 'Phone Number', value: '+923058135026', onTap: (){},),
+              UserDetailRow(title: 'User ID', value: controller.user.value.id, onTap: (){},),
+              UserDetailRow(title: 'Email', value: controller.user.value.email, onTap: (){},),
+              UserDetailRow(title: 'Phone Number', value: '+92 ${controller.user.value.phoneNumber}', onTap: (){},),
               UserDetailRow(title: 'Gender', value: 'Male', onTap: (){},),
 
               Divider(),

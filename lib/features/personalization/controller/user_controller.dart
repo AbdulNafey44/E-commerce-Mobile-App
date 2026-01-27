@@ -10,9 +10,17 @@ class userController extends GetxController{
 
   /// Variables
  final _userRepository = Get.put(UserRepository());
+ Rx<UserModel> user = UserModel.empty().obs;
+ RxBool profileLoading = false.obs;
 
 
- /// Function to save user record
+  @override
+  void onInit() {
+    fetchUserDetails();
+    super.onInit();
+  }
+
+  /// Function to save user record
    Future<void> saveUserRecord(UserCredential userCredential)  async {
 
      try{
@@ -35,4 +43,18 @@ class userController extends GetxController{
        USnackBarHelpers.warningSnackBar(title: 'Data not save', message: 'Something went wrong while saving your data');
      }
    }
+
+ /// Function to display user record
+  Future<void> fetchUserDetails() async {
+     try{
+       profileLoading.value = true ;
+       UserModel user = await _userRepository.fetchUserDetails();
+       this.user(user);
+     }catch(e){
+       user(UserModel.empty());
+     }
+     finally{
+       profileLoading.value = false;
+     }
+  }
 }

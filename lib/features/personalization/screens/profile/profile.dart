@@ -22,11 +22,14 @@ class ProfileScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            /// primary header
             UProfilePrimaryHeader(),
+           /// Details
            Padding(
              padding: const EdgeInsets.all(USizes.defaultSpace ),
              child: Column(
                children: [
+                 /// User Profile Details
                  UserProfileTile(),
                  SizedBox(height: USizes.spaceBtwItems,),
                  /// Account Setting heading
