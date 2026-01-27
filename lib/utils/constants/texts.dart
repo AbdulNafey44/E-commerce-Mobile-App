@@ -48,6 +48,8 @@ class UText{
   static const String searchTitle = 'Search in store';
 
   static const String categoriesTitle = 'Popular Categories';
+  static const String changeNameSubtitle = 'Update your name to keep your profile accurate and personalized';
+
 
   // Verify Email Screen
   static const String verifyEmailTitle = 'Verify your email address!';

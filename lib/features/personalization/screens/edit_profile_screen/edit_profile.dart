@@ -3,9 +3,11 @@ import 'package:e_commerce/common/widgets/appbar/appbar.dart';
 
 import 'package:e_commerce/common/widgets/text/section_heading.dart';
 import 'package:e_commerce/features/personalization/controller/user_controller.dart';
+import 'package:e_commerce/features/personalization/screens/change_name/change_name.dart';
 import 'package:e_commerce/features/personalization/screens/edit_profile_screen/widgets/user_profile_with_edit_icon.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class EditProfileScreen extends StatelessWidget {
@@ -38,7 +40,7 @@ class EditProfileScreen extends StatelessWidget {
                 showActionButton: false,
               ),
               /// Account Details
-              UserDetailRow(title: 'Name', value: controller.user.value.fullName, onTap: (){},),
+              UserDetailRow(title: 'Name', value: controller.user.value.fullName, onTap: () => Get.to(ChangeNameScreen())),
               UserDetailRow(title: 'username', value: controller.user.value.username, onTap: (){},),
               SizedBox(height: USizes.spaceBtwItems),
               /// Dividor
@@ -57,7 +59,7 @@ class EditProfileScreen extends StatelessWidget {
 
               Divider(),
               SizedBox(height: USizes.spaceBtwItems),
-              TextButton(onPressed: (){}, child: Text('Close Account', style: TextStyle(color: Colors.red))),
+              TextButton(onPressed: controller.deleteAccountWarningPopup, child: Text('Close Account', style: TextStyle(color: Colors.red))),
             ],
           ),
         ),

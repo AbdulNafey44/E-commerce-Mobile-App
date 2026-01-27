@@ -1,6 +1,7 @@
 
 
 import 'package:e_commerce/common/widgets/screens/verify_screen.dart';
+import 'package:e_commerce/data/repositories/user/user_repository.dart';
 import 'package:e_commerce/features/authentication/screens/login/login.dart';
 import 'package:e_commerce/navigation_menu.dart';
 import 'package:e_commerce/utils/exceptions/firebase_auth_exceptions.dart';
@@ -186,6 +187,31 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
+
+  /// [ForgetPassword] //// -- send mail for password reset
+  Future<void> reAuthenticateUserWithEmailAndPassword(String email, String password) async {
+    try {
+     AuthCredential credential = EmailAuthProvider.credential(email: email, password: password);
+
+     await currentUser!.reauthenticateWithCredential(credential);
+    }
+    on FirebaseAuthException catch (e) {
+      throw UFirebaseAuthException(e.code).message;
+    }
+    on FirebaseException catch (e) {
+      throw UFirebaseException(e.code).message;
+    }
+    on FormatException catch (_) {
+      throw UFormatException();
+    }
+    on PlatformException catch (e) {
+      throw UFormatException(e.code).message;
+    }
+    catch (e) {
+      throw ' Something went Wrong. please try again';
+    }
+  }
+
   //// [Logout] //// --- logout use
   Future<void> logout() async {
 
@@ -211,6 +237,29 @@ class AuthenticationRepository extends GetxController {
     }
 
   }
+
+  //// [Delete] /// Delete user Account
+
+  Future<void> deleteAccount() async {
+    try{
+      await UserRepository.instance.removeUserRecord(currentUser!.uid);
+      await _auth.currentUser?.delete();
+    } on FirebaseAuthException catch (e) {
+      throw UFirebaseAuthException(e.code).message;
+    }
+    on FirebaseException catch (e) {
+      throw UFirebaseException(e.code).message;
+    }
+    on FormatException catch (_) {
+      throw UFormatException();
+    }
+    on PlatformException catch (e) {
+      throw UFormatException(e.code).message;
+    }
+    catch (e) {
+      throw ' Something went Wrong. please try again';
+    }
+    }
 
 
 }
