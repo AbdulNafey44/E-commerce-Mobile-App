@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:e_commerce/data/repositories/authentication_repository.dart';
 import 'package:e_commerce/data/repositories/user/user_repository.dart';
 import 'package:e_commerce/features/authentication/models/user_model.dart';
@@ -12,6 +14,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:dio/dio.dart' as dio;
 
 class userController extends GetxController{
 
@@ -21,6 +25,7 @@ class userController extends GetxController{
  final _userRepository = Get.put(UserRepository());
  Rx<UserModel> user = UserModel.empty().obs;
  RxBool profileLoading = false.obs;
+ RxBool isProfileUploading = false.obs;
  /// Re-authenticate form variables
   final email = TextEditingController();
   final password = TextEditingController();
@@ -38,20 +43,26 @@ class userController extends GetxController{
    Future<void> saveUserRecord(UserCredential userCredential)  async {
 
      try{
-       // convert first name & lastname
-       final nameParts = UserModel.nameParts(userCredential.user!.displayName);
-       final username = '${userCredential.user!.displayName}23422';
-      // create user model
-       UserModel userModel = UserModel(
-           id: userCredential.user!.uid,
-           firstName: nameParts[0],
-           lastName: nameParts.length > 1 ? nameParts.sublist(1).join(' ') : ' ' ,
-           username: username,
-           email: userCredential.user!.email ?? '',
-           phoneNumber: userCredential.user!.phoneNumber ?? '',
-           profilePicture: userCredential.user!.photoURL ?? '');
-       // save user record
-      await _userRepository.saveUserRecord(userModel);
+       // First update RX variable and then check if user data is already stored. if not then store
+      await fetchUserDetails();
+       if(user.value.id.isEmpty){
+         // convert first name & lastname
+         final nameParts = UserModel.nameParts(userCredential.user!.displayName);
+         final username = '${userCredential.user!.displayName}23422';
+         // create user model
+         UserModel userModel = UserModel(
+             id: userCredential.user!.uid,
+             firstName: nameParts[0],
+             lastName: nameParts.length > 1 ? nameParts.sublist(1).join(' ') : ' ' ,
+             username: username,
+             email: userCredential.user!.email ?? '',
+             phoneNumber: userCredential.user!.phoneNumber ?? '',
+             profilePicture: userCredential.user!.photoURL ?? '',
+         );
+         // save user record
+         await _userRepository.saveUserRecord(userModel);
+
+       }
 
      }catch(e){
        USnackBarHelpers.warningSnackBar(title: 'Data not save', message: 'Something went wrong while saving your data');
@@ -144,4 +155,47 @@ class userController extends GetxController{
       USnackBarHelpers.errorSnackBar(title: 'Failed!', message: e.toString());
     }
    }
+
+   Future<void> updateUserProfilePicture() async {
+    try{
+     // Start loading
+     isProfileUploading.value = true ;
+    // pick image from gallery
+      XFile? image = await  ImagePicker().pickImage(source: ImageSource.gallery, maxHeight: 512, maxWidth: 512);
+      if(image == null) return;
+
+    // Convert XFile to File
+     File file = File(image.path);
+
+     // delete user current profile picture
+     if(user.value.publicId.isNotEmpty){
+       await _userRepository.deleteProfilePicture(user.value.publicId);
+     }
+    // Upload Profile Picture to Cloudinary
+    dio.Response response = await _userRepository.uploadImage(file);
+    // Get Data
+    if(response.statusCode == 200){
+      final data = response.data;
+      final imageUrl = data['url'];
+      final publicId = data['public_id'];
+      // update profile picture from fire store
+      await _userRepository.updateSingleField({'profilePicture' : imageUrl, 'publicId' : publicId});
+
+      // update profile picture and public Id from RX User
+      user.value.profilePicture = imageUrl ;
+      user.value.publicId = publicId ;
+      user.refresh();
+      
+      USnackBarHelpers.successSnackBar(title: 'Congratulation', message: 'Profile Picture updated successfully');
+
+    }else{
+      throw 'Failed to upload profile picture. please try again';
+    }
+    }catch(e){
+      USnackBarHelpers.errorSnackBar(title: 'Failed', message: e.toString());
+    }
+    finally{
+      isProfileUploading.value = false ;
+    }
+}
 }
