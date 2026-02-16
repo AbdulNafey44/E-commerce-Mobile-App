@@ -173,8 +173,8 @@ class userController extends GetxController{
      }
     // Upload Profile Picture to Cloudinary
     dio.Response response = await _userRepository.uploadImage(file);
-    // Get Data
     if(response.statusCode == 200){
+      // Get Data
       final data = response.data;
       final imageUrl = data['url'];
       final publicId = data['public_id'];
