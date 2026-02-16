@@ -1,14 +1,22 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:crypto/crypto.dart';
 import 'package:e_commerce/data/repositories/authentication_repository.dart';
+import 'package:e_commerce/data/services/cloudinary_services.dart';
 import 'package:e_commerce/features/authentication/models/user_model.dart';
 import 'package:e_commerce/utils/constants/keys.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
+import '../../../utils/constants/apis.dart';
 import '../../../utils/exceptions/firebase_auth_exceptions.dart';
 import '../../../utils/exceptions/firebase_exceptions.dart';
 import '../../../utils/exceptions/format_exceptions.dart';
+import 'package:dio/dio.dart' as dio;
 
 class UserRepository extends GetxController {
   static UserRepository get instance => Get.find();
@@ -16,7 +24,7 @@ class UserRepository extends GetxController {
   /// variable
 
   final _db = FirebaseFirestore.instance;
-
+  final _cloudinaryServices = Get.put(CloudinaryServices());
 
 
   /// function to store user data
@@ -110,4 +118,27 @@ class UserRepository extends GetxController {
       throw ' Something went Wrong. please try again';
     }
   }
+
+
+  /// [UploadImage] - Function to upload image
+  Future<dio.Response> uploadImage(File image) async {
+     try{
+      dio.Response response =  await  _cloudinaryServices.uploadImage(image, UKeys.profileFolder);
+       return response ;
+
+     }catch(e){
+       debugPrint('Error while upload profile:$e');
+       throw 'Failed to upload image. please try again';
+     }
+  }
+  /// [DeleteImage] - Function to delete profile picture
+  Future<dio.Response> deleteProfilePicture(String publicId) async {
+     try{
+     dio.Response response = await _cloudinaryServices.deleteImage(publicId);
+       return response ;
+     }catch(e){
+       throw 'Something went wrong. please try again';
+     }
+  }
+
 }
