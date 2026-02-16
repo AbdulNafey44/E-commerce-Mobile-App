@@ -21,6 +21,12 @@ dependencies:
   iconsax: ^0.0.8
   carousel_slider: ^5.1.1
   readmore: ^3.0.0
+  image_picker: ^1.2.1
+  dio: ^5.9.1
+  crypto: ^3.0.7
+  cached_network_image: ^3.4.1
+
+  path_provider: ^2.1.5
 
   get_storage: ^2.1.1
   connectivity_plus: ^7.0.0
