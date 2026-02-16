@@ -1,3 +1,4 @@
+import 'package:e_commerce/common/widgets/images/circular_image.dart';
 import 'package:e_commerce/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 
@@ -28,24 +29,22 @@ class UVerticalImageText extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           ///circular image ..///
-          UCircularContainer(
-            height: 56,
-            width: 56,
-            backgroundColor: backgroundColor ?? (dark? UColors.dark : UColors.light),
-            padding: EdgeInsets.all(USizes.sm),
-            child: Image(image: AssetImage(image), fit: BoxFit.cover),
-          ),
+          UCircularImage(
+          height: 56,
+          width: 56,
+          image: image, isNetworkImage: true),
           SizedBox(height: USizes.spaceBtwItems / 3),
           //...Title..//
           SizedBox(
-            width: 55,
+            width: 60,
             child: Text(
               title,
               style: Theme.of(
                 context,
-              ).textTheme.labelMedium!.apply(color: textColor),
+              ).textTheme.labelMedium!.apply(color: textColor, overflow: TextOverflow.ellipsis),
             ),
           ),
         ],
