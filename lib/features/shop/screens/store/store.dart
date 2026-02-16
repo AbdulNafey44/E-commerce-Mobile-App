@@ -1,4 +1,5 @@
 import 'package:e_commerce/common/widgets/text/section_heading.dart';
+import 'package:e_commerce/features/shop/controller/category/category_controller.dart';
 import 'package:e_commerce/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:e_commerce/features/shop/screens/store/widgets/store_primary_header.dart';
 import 'package:e_commerce/utils/helpers/helper_function.dart';
@@ -16,9 +17,9 @@ class StoreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool dark = UHelperFunction.isDarkMode(context);
+    final controller = Get.put(CategoryController());
     return DefaultTabController(
-      length: 5,
+      length: controller.featureCategories.length,
       child: Scaffold(
         body: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) {
@@ -63,28 +64,12 @@ class StoreScreen extends StatelessWidget {
                   ),
                 ),
 
-                bottom: UTabBar(
-                  tabs: [
-                    Tab(child: Text('Sports')),
-                    Tab(child: Text('Furniture')),
-                    Tab(child: Text('Electronics')),
-                    Tab(child: Text('Cloth')),
-                    Tab(child: Text('Cosmetics')),
-                  ],
-                ),
+                bottom: UTabBar(tabs: controller.featureCategories.map((category) =>  Tab(child: Text(category.name))).toList()),
               ),
             ];
           },
           body: TabBarView(
-            children: [
-              UCategoryTab(),
-              UCategoryTab(),
-              UCategoryTab(),
-              UCategoryTab(),
-              UCategoryTab(),
-            ],
-          ),
-        ),
+            children: controller.featureCategories.map((category) => UCategoryTab()).toList())),
       ),
     );
   }
