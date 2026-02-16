@@ -1,3 +1,6 @@
+import 'package:e_commerce/common/widgets/shimmer/category_shimmer.dart';
+import 'package:e_commerce/features/shop/controller/category/category_controller.dart';
+import 'package:e_commerce/features/shop/models/category_model.dart';
 import 'package:e_commerce/utils/constants/images.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,6 +17,7 @@ class UHomeCategories extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(CategoryController());
     return Padding(
       padding: const EdgeInsets.only(left: USizes.spaceBtwSections),
       child: Column(
@@ -26,17 +30,33 @@ class UHomeCategories extends StatelessWidget {
             ).textTheme.headlineSmall!.apply(color: UColors.white),
           ),
           SizedBox(height: USizes.spaceBtwItems),
-          SizedBox(
-            height: 80,
-            child: ListView.separated(
-              separatorBuilder: (context, index) =>
-                  SizedBox(width: USizes.spaceBtwItems),
-              scrollDirection: Axis.horizontal,
-              itemCount: 10,
-              itemBuilder: (context, index) {
-                return UVerticalImageText(title: 'Sports', image: UImages.sportsIcon,textColor: UColors.white, onTap:() =>  Get.to(SubCategoryScreen()),);
-              },
-            ),
+          /// categories list
+          Obx(
+            () {
+              final categories = controller.featureCategories;
+              /// loading state
+              if(controller.isCategoriesLoading.value){
+                return UCategoryShimmer(itemCount: 6);
+              }
+              /// [ empty ]
+              if(categories.isEmpty){
+                return Text('Categories not found');
+              }
+              /// [Data Found]
+             return SizedBox(
+                height: 80,
+                child: ListView.separated(
+                  separatorBuilder: (context, index) =>
+                      SizedBox(width: USizes.spaceBtwItems),
+                  scrollDirection: Axis.horizontal,
+                  itemCount: categories.length,
+                  itemBuilder: (context, index) {
+                    CategoryModel category = categories[index];
+                    return UVerticalImageText(title: category.name, image: category.image,textColor: UColors.white, onTap:() =>  Get.to(SubCategoryScreen()),);
+                  },
+                ),
+              );
+            }
           ),
         ],
       ),
