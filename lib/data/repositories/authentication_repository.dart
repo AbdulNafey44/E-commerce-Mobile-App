@@ -1,7 +1,9 @@
 
 
 import 'package:e_commerce/common/widgets/screens/verify_screen.dart';
+import 'package:e_commerce/data/repositories/category/category_repository.dart';
 import 'package:e_commerce/data/repositories/user/user_repository.dart';
+import 'package:e_commerce/dummy_data.dart';
 import 'package:e_commerce/features/authentication/screens/login/login.dart';
 import 'package:e_commerce/features/personalization/controller/user_controller.dart';
 import 'package:e_commerce/navigation_menu.dart';
@@ -33,6 +35,7 @@ class AuthenticationRepository extends GetxController {
 
 
     screenRedirect();
+
   }
 
   void screenRedirect() {
@@ -247,7 +250,7 @@ class AuthenticationRepository extends GetxController {
       // Remove profile picture from cloudinary
       String publicId = userController.instance.user.value.publicId;
       if(publicId.isNotEmpty){
-        UserRepository.instance.deleteProfilePicture(publicId);
+       await UserRepository.instance.deleteProfilePicture(publicId);
       }
       await _auth.currentUser?.delete();
     } on FirebaseAuthException catch (e) {
@@ -265,7 +268,4 @@ class AuthenticationRepository extends GetxController {
     catch (e) {
       throw ' Something went Wrong. please try again';
     }
-    }
-
-
-}
+    }}
