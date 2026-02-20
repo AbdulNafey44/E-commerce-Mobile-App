@@ -57,7 +57,7 @@ class HomeScreen extends StatelessWidget {
                 children: [
         
                   ///..banners...//
-                  UPromeSlider(banners: [UImages.homeBanner1, UImages.homeBanner2, UImages.homeBanner3, UImages.homeBanner4, UImages.homeBanner5],),
+                  UPromeSlider(),
         
                   const SizedBox(height: USizes.spaceBtwItems),
                   USectionHeading(title: 'Popular Products', onPressed: () => Get.to(AllProductsScreen()),),
