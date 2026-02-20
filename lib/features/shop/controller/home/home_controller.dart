@@ -9,12 +9,6 @@ static HomeController get instance => Get.find();
 
 
 ///Variables//
- final carouselController = CarouselSliderController() ;
 
- RxInt currentIndex = 0.obs;
 
- ///on page change ///
-  void onPageChanged(int index){
-    currentIndex.value =index;
-  }
 }
