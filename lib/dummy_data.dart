@@ -1,9 +1,8 @@
-
 import 'package:e_commerce/routs/routes.dart';
 import 'package:e_commerce/utils/constants/texts.dart';
 
-
 import 'features/shop/models/banners_model.dart';
+import 'features/shop/models/brand_model.dart';
 import 'features/shop/models/category_model.dart';
 import 'utils/constants/images.dart';
 
@@ -11,134 +10,302 @@ class UDummyData {
   /// List of all Banners
 
   static final List<BannerModel> banner = [
-    BannerModel(imageUrl: UImages.homeBanner1, targetScreen: URoutes.order, active: true),
-    BannerModel(imageUrl: UImages.homeBanner2, targetScreen: URoutes.cart, active: true),
-    BannerModel(imageUrl: UImages.homeBanner3, targetScreen: URoutes.wishlist, active: true),
-    BannerModel(imageUrl: UImages.homeBanner4, targetScreen: URoutes.productDetail, active: true),
-    BannerModel(imageUrl: UImages.homeBanner5, targetScreen: URoutes.profile, active: true),
+    BannerModel(
+      imageUrl: UImages.homeBanner1,
+      targetScreen: URoutes.order,
+      active: true,
+    ),
+    BannerModel(
+      imageUrl: UImages.homeBanner2,
+      targetScreen: URoutes.cart,
+      active: true,
+    ),
+    BannerModel(
+      imageUrl: UImages.homeBanner3,
+      targetScreen: URoutes.wishlist,
+      active: true,
+    ),
+    BannerModel(
+      imageUrl: UImages.homeBanner4,
+      targetScreen: URoutes.productDetail,
+      active: true,
+    ),
+    BannerModel(
+      imageUrl: UImages.homeBanner5,
+      targetScreen: URoutes.profile,
+      active: true,
+    ),
   ];
 
   /// List of all Categories
   static final List<CategoryModel> categories = [
     /// Parent Categories
-    CategoryModel(id: '1', name: 'Clothes', image: UImages.clothesIcon, isFeatured: true),
-    CategoryModel(id: '2', name: 'Shoes', image: UImages.shoesIcon, isFeatured: true),
-    CategoryModel(id: '3', name: 'Cosmetics', image: UImages.cosmeticsIcon, isFeatured: true),
-    CategoryModel(id: '4', name: 'Electronics', image: UImages.electronicsIcon, isFeatured: true),
-    CategoryModel(id: '5', name: 'Furniture', image: UImages.furnitureIcon, isFeatured: true),
-    CategoryModel(id: '6', name: 'Sports', image: UImages.sportsIcon, isFeatured: true),
+    CategoryModel(
+      id: '1',
+      name: 'Clothes',
+      image: UImages.clothesIcon,
+      isFeatured: true,
+    ),
+    CategoryModel(
+      id: '2',
+      name: 'Shoes',
+      image: UImages.shoesIcon,
+      isFeatured: true,
+    ),
+    CategoryModel(
+      id: '3',
+      name: 'Cosmetics',
+      image: UImages.cosmeticsIcon,
+      isFeatured: true,
+    ),
+    CategoryModel(
+      id: '4',
+      name: 'Electronics',
+      image: UImages.electronicsIcon,
+      isFeatured: true,
+    ),
+    CategoryModel(
+      id: '5',
+      name: 'Furniture',
+      image: UImages.furnitureIcon,
+      isFeatured: true,
+    ),
+    CategoryModel(
+      id: '6',
+      name: 'Sports',
+      image: UImages.sportsIcon,
+      isFeatured: true,
+    ),
 
     /// Clothes
-    CategoryModel(id: '7', name: 'Shirts', image: UImages.shirtIcon, parentId: '1'),
-    CategoryModel(id: '8', name: 'Jackets', image: UImages.jacketsIcon, parentId: '1'),
-    CategoryModel(id: '9', name: 'Shorts', image: UImages.shortsIcon, parentId: '1'),
+    CategoryModel(
+      id: '7',
+      name: 'Shirts',
+      image: UImages.shirtIcon,
+      parentId: '1',
+    ),
+    CategoryModel(
+      id: '8',
+      name: 'Jackets',
+      image: UImages.jacketsIcon,
+      parentId: '1',
+    ),
+    CategoryModel(
+      id: '9',
+      name: 'Shorts',
+      image: UImages.shortsIcon,
+      parentId: '1',
+    ),
 
     /// Shoes
-    CategoryModel(id: '10', name: 'Formal Shoes', image: UImages.formalShoesIcon, parentId: '2'),
-    CategoryModel(id: '11', name: 'Sports Shoes', image: UImages.sportsShoesIcon, parentId: '2'),
+    CategoryModel(
+      id: '10',
+      name: 'Formal Shoes',
+      image: UImages.formalShoesIcon,
+      parentId: '2',
+    ),
+    CategoryModel(
+      id: '11',
+      name: 'Sports Shoes',
+      image: UImages.sportsShoesIcon,
+      parentId: '2',
+    ),
 
     /// Cosmetics
-    CategoryModel(id: '12', name: 'Face', image: UImages.faceIcon, parentId: '3'),
-    CategoryModel(id: '13', name: 'Hair Oils', image: UImages.hairOilIcon, parentId: '3'),
-    CategoryModel(id: '14', name: 'Bags', image: UImages.bagsIcon, parentId: '3'),
-    CategoryModel(id: '15', name: 'Perfumes', image: UImages.perfumeIcon, parentId: '3'),
-    CategoryModel(id: '16', name: 'Watches', image: UImages.watchIcon, parentId: '3'),
+    CategoryModel(
+      id: '12',
+      name: 'Face',
+      image: UImages.faceIcon,
+      parentId: '3',
+    ),
+    CategoryModel(
+      id: '13',
+      name: 'Hair Oils',
+      image: UImages.hairOilIcon,
+      parentId: '3',
+    ),
+    CategoryModel(
+      id: '14',
+      name: 'Bags',
+      image: UImages.bagsIcon,
+      parentId: '3',
+    ),
+    CategoryModel(
+      id: '15',
+      name: 'Perfumes',
+      image: UImages.perfumeIcon,
+      parentId: '3',
+    ),
+    CategoryModel(
+      id: '16',
+      name: 'Watches',
+      image: UImages.watchIcon,
+      parentId: '3',
+    ),
 
     /// Electronics
-    CategoryModel(id: '17', name: 'Gadgets', image: UImages.gadgetsIcon, parentId: '4', isFeatured: false),
-    CategoryModel(id: '18', name: 'Laptops', image: UImages.laptopsIcon, parentId: '4', isFeatured: false),
-    CategoryModel(id: '19', name: 'Mobiles', image: UImages.mobileIcon, parentId: '4', isFeatured: false),
+    CategoryModel(
+      id: '17',
+      name: 'Gadgets',
+      image: UImages.gadgetsIcon,
+      parentId: '4',
+      isFeatured: false,
+    ),
+    CategoryModel(
+      id: '18',
+      name: 'Laptops',
+      image: UImages.laptopsIcon,
+      parentId: '4',
+      isFeatured: false,
+    ),
+    CategoryModel(
+      id: '19',
+      name: 'Mobiles',
+      image: UImages.mobileIcon,
+      parentId: '4',
+      isFeatured: false,
+    ),
 
     /// Furniture
-    CategoryModel(id: '20', name: 'Bed', image: UImages.bedIcon, parentId: '5', isFeatured: false),
-    CategoryModel(id: '21', name: 'Lamps', image: UImages.lampIcon, parentId: '5', isFeatured: false),
+    CategoryModel(
+      id: '20',
+      name: 'Bed',
+      image: UImages.bedIcon,
+      parentId: '5',
+      isFeatured: false,
+    ),
+    CategoryModel(
+      id: '21',
+      name: 'Lamps',
+      image: UImages.lampIcon,
+      parentId: '5',
+      isFeatured: false,
+    ),
 
     /// Sports
-    CategoryModel(id: '22', name: 'Cricket', image: UImages.cricketIcon, parentId: '6', isFeatured: false),
-    CategoryModel(id: '23', name: 'Soccer', image: UImages.soccerIcon, parentId: '6', isFeatured: false),
+    CategoryModel(
+      id: '22',
+      name: 'Cricket',
+      image: UImages.cricketIcon,
+      parentId: '6',
+      isFeatured: false,
+    ),
+    CategoryModel(
+      id: '23',
+      name: 'Soccer',
+      image: UImages.soccerIcon,
+      parentId: '6',
+      isFeatured: false,
+    ),
   ];
-  //
-  // /// List of all Brands
-  // static final List<BrandModel> brands = [
-  //   BrandModel(
-  //       id: '1',
-  //       image: 'https://res.cloudinary.com/dx4o5amce/image/upload/v1746712693/Brands%20Images/tl9wjbj77zeo9qul3eq2.png',
-  //       name: 'Nike',
-  //       productsCount: 2,
-  //       isFeatured: true),
-  //   BrandModel(
-  //       id: '2',
-  //       image: 'https://res.cloudinary.com/dx4o5amce/image/upload/v1746712696/Brands%20Images/fdxer5l7qrisfyff2c9x.jpg',
-  //       name: 'Adidas',
-  //       productsCount: 2,
-  //       isFeatured: true),
-  //   BrandModel(
-  //       id: '3',
-  //       image: 'https://res.cloudinary.com/dx4o5amce/image/upload/v1746712697/Brands%20Images/rgoe3o3qptrjun5fmoqe.jpg',
-  //       name: 'Apple',
-  //       productsCount: 8,
-  //       isFeatured: true),
-  //   BrandModel(
-  //       id: '4',
-  //       image: 'https://res.cloudinary.com/dx4o5amce/image/upload/v1746712698/Brands%20Images/mcwd8faen7iogfrpt0ts.png',
-  //       name: 'Bata',
-  //       productsCount: 4,
-  //       isFeatured: true),
-  //   BrandModel(
-  //       id: '5',
-  //       image: 'https://res.cloudinary.com/dx4o5amce/image/upload/v1746712699/Brands%20Images/peojxxvbvsv4grldfliu.png',
-  //       name: 'Bloody',
-  //       productsCount: 9,
-  //       isFeatured: false),
-  //   BrandModel(
-  //       id: '6',
-  //       image: 'https://res.cloudinary.com/dx4o5amce/image/upload/v1746712701/Brands%20Images/cc0yugmbnl6l3r9fxzej.jpg',
-  //       name: 'Breakout',
-  //       productsCount: 7,
-  //       isFeatured: true),
-  //   BrandModel(
-  //       id: '7',
-  //       image: 'https://res.cloudinary.com/dx4o5amce/image/upload/v1746712702/Brands%20Images/uija31c12nklaouz40rg.png',
-  //       name: 'Dari Mooch',
-  //       productsCount: 4,
-  //       isFeatured: true),
-  //   BrandModel(
-  //       id: '8',
-  //       image: 'https://res.cloudinary.com/dx4o5amce/image/upload/v1746712703/Brands%20Images/e1ymwagv5db0cvsrdqfo.jpg',
-  //       name: 'Interwood',
-  //       productsCount: 9,
-  //       isFeatured: false),
-  //   BrandModel(
-  //       id: '9',
-  //       image: 'https://res.cloudinary.com/dx4o5amce/image/upload/v1746712705/Brands%20Images/hih7hp1324alvlptfsi5.jpg',
-  //       name: 'HP',
-  //       productsCount: 4,
-  //       isFeatured: false),
-  //   BrandModel(
-  //       id: '10',
-  //       image: 'https://res.cloudinary.com/dx4o5amce/image/upload/v1746712706/Brands%20Images/hzi6y2n8km7hsqfl0m4k.png',
-  //       name: 'J.',
-  //       productsCount: 8,
-  //       isFeatured: true),
-  //   BrandModel(
-  //       id: '11',
-  //       image: 'https://res.cloudinary.com/dx4o5amce/image/upload/v1746712707/Brands%20Images/ehasbyoowj8srvurhqvq.png',
-  //       name: 'NDURE',
-  //       productsCount: 4,
-  //       isFeatured: true),
-  //   BrandModel(
-  //       id: '12',
-  //       image: 'https://res.cloudinary.com/dx4o5amce/image/upload/v1746712709/Brands%20Images/ox9ir27nmkpj7fniwshs.jpg',
-  //       name: 'NorthStar',
-  //       productsCount: 2,
-  //       isFeatured: true),
-  //   BrandModel(
-  //       id: '13',
-  //       image: 'https://res.cloudinary.com/dx4o5amce/image/upload/v1746712710/Brands%20Images/xd3q9uwpkp9tlkc8u7ga.png',
-  //       name: 'Polo',
-  //       productsCount: 2,
-  //       isFeatured: true),
-  // ];
+
+  /// List of all Brands
+  static final List<BrandModel> brands = [
+    BrandModel(
+      id: '1',
+      image:
+         UImages.nikeLogo,
+      name: 'Nike',
+      productsCount: 2,
+      isFeatured: true,
+    ),
+    BrandModel(
+      id: '2',
+      image:
+          UImages.adidasLogo,
+      name: 'Adidas',
+      productsCount: 2,
+      isFeatured: true,
+    ),
+    BrandModel(
+      id: '3',
+      image:
+          UImages.appleLogo,
+      name: 'Apple',
+      productsCount: 8,
+      isFeatured: true,
+    ),
+    BrandModel(
+      id: '4',
+      image:
+          UImages.bataLogo,
+      name: 'Bata',
+      productsCount: 4,
+      isFeatured: true,
+    ),
+    BrandModel(
+      id: '5',
+      image:
+          UImages.bloodyLogo,
+      name: 'Bloody',
+      productsCount: 9,
+      isFeatured: false,
+    ),
+    BrandModel(
+      id: '6',
+      image:
+          UImages.breakoutLogo,
+      name: 'Breakout',
+      productsCount: 7,
+      isFeatured: true,
+    ),
+    BrandModel(
+      id: '7',
+      image:
+          UImages.dariMoochLogo,
+      name: 'Dari Mooch',
+      productsCount: 4,
+      isFeatured: true,
+    ),
+    BrandModel(
+      id: '8',
+      image:
+          UImages.interWoodLogo,
+      name: 'Interwood',
+      productsCount: 9,
+      isFeatured: false,
+    ),
+    BrandModel(
+      id: '9',
+      image:
+         UImages.hpLogo,
+      name: 'HP',
+      productsCount: 4,
+      isFeatured: false,
+    ),
+    BrandModel(
+      id: '10',
+      image:
+          UImages.jLogo,
+      name: 'J.',
+      productsCount: 8,
+      isFeatured: true,
+    ),
+    BrandModel(
+      id: '11',
+      image:
+          UImages.nDURELogo,
+      name: 'NDURE',
+      productsCount: 4,
+      isFeatured: true,
+    ),
+    BrandModel(
+      id: '12',
+      image:
+          UImages.northStarLogo,
+      name: 'NorthStar',
+      productsCount: 2,
+      isFeatured: true,
+    ),
+    BrandModel(
+      id: '13',
+      image:
+          UImages.poloLogo,
+      name: 'Polo',
+      productsCount: 2,
+      isFeatured: true,
+    ),
+  ];
   //
   // /// List of all products - 68 Products
   // static final List<ProductModel> products = [
