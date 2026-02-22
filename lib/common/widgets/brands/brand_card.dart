@@ -1,3 +1,4 @@
+import 'package:e_commerce/features/shop/models/brand_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../utils/constants/enum.dart';
@@ -12,10 +13,12 @@ class UBrandCard extends StatelessWidget {
   const UBrandCard({
     super.key,
     this.showBorder = true,
-     this.onTap,
+     this.onTap, required this.brand,
   });
   final bool showBorder ;
   final VoidCallback? onTap;
+
+  final BrandModel brand ;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -28,16 +31,17 @@ class UBrandCard extends StatelessWidget {
         child: Row(
           children: [
             ///brand image
-            Flexible(child: URoundedImage(imageUrl: UImages.bataLogo)),
+            Flexible(child: URoundedImage(imageUrl: brand.image,
+            isNetworkImage: true,)),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   ///brand title & verify icon
-                  UBrandTitleWithverifyIcon(title: 'Bata' , brandTextSize: TextSizes.large),
+                  UBrandTitleWithverifyIcon(title: brand.name , brandTextSize: TextSizes.large),
                   /// Text
-                  Text('172 products', style: Theme.of(context).textTheme.labelMedium,overflow: TextOverflow.ellipsis,)
+                  Text('${brand.productsCount}products', style: Theme.of(context).textTheme.labelMedium,overflow: TextOverflow.ellipsis,)
                 ],
               ),
             ),
