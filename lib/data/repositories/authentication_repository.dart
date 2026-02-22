@@ -1,10 +1,11 @@
 
 
 import 'package:e_commerce/common/widgets/screens/verify_screen.dart';
-import 'package:e_commerce/data/repositories/banners/banner_repository.dart';
-import 'package:e_commerce/data/repositories/category/category_repository.dart';
+import 'package:e_commerce/data/repositories/brand/brand_repository.dart';
+
 import 'package:e_commerce/data/repositories/user/user_repository.dart';
 import 'package:e_commerce/dummy_data.dart';
+
 import 'package:e_commerce/features/authentication/screens/login/login.dart';
 import 'package:e_commerce/features/personalization/controller/user_controller.dart';
 import 'package:e_commerce/navigation_menu.dart';
@@ -36,7 +37,6 @@ class AuthenticationRepository extends GetxController {
 
 
     screenRedirect();
-
 
   }
 
