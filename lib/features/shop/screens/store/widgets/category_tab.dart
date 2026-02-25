@@ -7,6 +7,7 @@ import '../../../../../common/widgets/text/section_heading.dart';
 import '../../../../../utils/constants/images.dart';
 import '../../../../../utils/constants/sizes.dart';
 import '../../../models/brand_model.dart';
+import '../../../models/product_model.dart';
 
 
 class UCategoryTab extends StatelessWidget {
@@ -34,7 +35,7 @@ class UCategoryTab extends StatelessWidget {
               USectionHeading(title: 'You might like', onPressed: (){},),
               /// grid layout products
               UGridLayout(itemCount: 6, itemBuilder: (context, index) {
-                return UProductCard();
+                return UProductCard(product: ProductModel.empty());
               },),
               SizedBox(height: USizes.spaceBtwSections,),
             ],
