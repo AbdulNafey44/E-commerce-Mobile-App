@@ -1,11 +1,13 @@
+import 'package:e_commerce/common/widgets/shimmer/brands_shimmer.dart';
 import 'package:e_commerce/common/widgets/text/section_heading.dart';
+import 'package:e_commerce/features/shop/controller/brand/brand_controller.dart';
 import 'package:e_commerce/features/shop/controller/category/category_controller.dart';
+import 'package:e_commerce/features/shop/models/brand_model.dart';
 import 'package:e_commerce/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:e_commerce/features/shop/screens/store/widgets/store_primary_header.dart';
 import 'package:e_commerce/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 import '../../../../common/widgets/appbar/tabbar.dart';
 import '../../../../common/widgets/brands/brand_card.dart';
@@ -18,6 +20,8 @@ class StoreScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(CategoryController());
+    final brandController = Get.put(BrandController());
+
     return DefaultTabController(
       length: controller.featureCategories.length,
       child: Scaffold(
@@ -41,20 +45,42 @@ class StoreScreen extends StatelessWidget {
                         ),
                         child: Column(
                           children: [
-                            USectionHeading(title: 'Brands', onPressed: () => Get.to(BrandsScreen()),),
+                            USectionHeading(
+                              title: 'Brands',
+                              onPressed: () => Get.to(() => BrandsScreen()),
+                            ),
 
                             /// brand card
                             SizedBox(height: USizes.spaceBtwItems),
                             SizedBox(
                               height: USizes.brandCardHeight,
-                              child: ListView.separated(
-                                separatorBuilder: (context, index) =>
-                                    SizedBox(width: USizes.spaceBtwItems),
-                                itemCount: 10,
-                                shrinkWrap: true,
-                                scrollDirection: Axis.horizontal,
-                                itemBuilder: (context, index) => SizedBox( width: USizes.brandCardWidth,
-                                    child: UBrandCard()),
+                              child: Obx(
+                                    () {
+                                  /// [ loading state ]
+                                  if (brandController.isLoading.value) {
+                                    return UBrandsShimmer();
+                                  }
+                                  /// [Empty] state
+                                  if (brandController.featuredBrands.isEmpty) {
+                                    return const Text('Brands Not Found');
+                                  }
+                                  /// [ Data Found ] - state
+                                  return ListView.separated(
+                                    separatorBuilder: (context, index) =>
+                                        SizedBox(width: USizes.spaceBtwItems),
+                                    itemCount: brandController.featuredBrands.length,
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.horizontal,
+                                    itemBuilder: (context, index) {
+                                      BrandModel brand =
+                                      brandController.featuredBrands[index];
+                                      return SizedBox(
+                                        width: USizes.brandCardWidth,
+                                        child: UBrandCard(brand: brand),
+                                      );
+                                    },
+                                  );
+                                },
                               ),
                             ),
                           ],
@@ -64,12 +90,20 @@ class StoreScreen extends StatelessWidget {
                   ),
                 ),
 
-                bottom: UTabBar(tabs: controller.featureCategories.map((category) =>  Tab(child: Text(category.name))).toList()),
+                bottom: UTabBar(
+                  tabs: controller.featureCategories
+                      .map((category) => Tab(child: Text(category.name)))
+                      .toList(),
+                ),
               ),
             ];
           },
           body: TabBarView(
-            children: controller.featureCategories.map((category) => UCategoryTab()).toList())),
+            children: controller.featureCategories
+                .map((category) => UCategoryTab())
+                .toList(),
+          ),
+        ),
       ),
     );
   }

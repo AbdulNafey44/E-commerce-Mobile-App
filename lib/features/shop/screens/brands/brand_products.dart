@@ -6,6 +6,7 @@ import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../common/widgets/products/sortable_products.dart';
+import '../../models/brand_model.dart';
 
 
 class BrandsProductsScreen extends StatelessWidget {
@@ -22,7 +23,7 @@ class BrandsProductsScreen extends StatelessWidget {
           child: Column(
             children: [
               /// brand
-             UBrandCard(),
+             UBrandCard(brand: BrandModel.empty()),
               SizedBox(height: USizes.spaceBtwSections),
              /// brands products
              UScrolableProducts(),
