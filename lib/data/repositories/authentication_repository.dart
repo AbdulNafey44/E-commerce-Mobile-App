@@ -2,6 +2,7 @@
 
 import 'package:e_commerce/common/widgets/screens/verify_screen.dart';
 import 'package:e_commerce/data/repositories/brand/brand_repository.dart';
+import 'package:e_commerce/data/repositories/product/product_repository.dart';
 
 import 'package:e_commerce/data/repositories/user/user_repository.dart';
 import 'package:e_commerce/dummy_data.dart';
@@ -37,7 +38,6 @@ class AuthenticationRepository extends GetxController {
 
 
     screenRedirect();
-
   }
 
   void screenRedirect() {
