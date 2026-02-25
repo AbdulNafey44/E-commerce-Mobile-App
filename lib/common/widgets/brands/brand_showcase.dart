@@ -10,9 +10,10 @@ import 'brand_card.dart';
 
 class UBrandShowCase extends StatelessWidget {
   const UBrandShowCase({
-    super.key, required this.images,
+    super.key, required this.images, required this.brand,
   });
   final List<String> images;
+  final BrandModel brand;
   @override
   Widget build(BuildContext context) {
     final bool dark = UHelperFunction.isDarkMode(context);
@@ -25,7 +26,7 @@ class UBrandShowCase extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          UBrandCard(showBorder: false, brand: BrandModel.empty(),),
+          UBrandCard(showBorder: false, brand: brand),
          Row(
              children:  images.map((image) => BuildBrandImage(dark, image)).toList()
          )
