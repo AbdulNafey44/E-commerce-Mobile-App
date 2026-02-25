@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 
 import 'package:iconsax/iconsax.dart';
 
+import '../../models/product_model.dart';
+
 
 class WishlistScreen extends StatelessWidget {
   const WishlistScreen({super.key});
@@ -32,7 +34,7 @@ class WishlistScreen extends StatelessWidget {
         body: SingleChildScrollView(child: Padding(
             padding: const EdgeInsets.all(USizes.defaultSpace),
             child: UGridLayout(itemCount: 10,
-                itemBuilder: (context, index) => UProductCard())),
+                itemBuilder: (context, index) => UProductCard(product: ProductModel.empty(),))),
         )
         );
     }
