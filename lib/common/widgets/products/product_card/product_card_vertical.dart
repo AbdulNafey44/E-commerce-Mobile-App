@@ -89,8 +89,8 @@ class UProductCard extends StatelessWidget {
                       UProductPriceText(price: '120',),
                       ///add btn
                       Container(
-                        width: USizes.iconLg * 1.2,
-                        height: USizes.iconLg * 1.2,
+                        width: USizes.iconLg ,
+                        height: USizes.iconLg,
                         decoration: BoxDecoration(
                             color: UColors.primary,
                             borderRadius: BorderRadius.only(
