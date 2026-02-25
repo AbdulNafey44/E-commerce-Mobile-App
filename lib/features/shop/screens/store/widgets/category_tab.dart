@@ -6,13 +6,15 @@ import '../../../../../common/widgets/products/product_card/product_card_vertica
 import '../../../../../common/widgets/text/section_heading.dart';
 import '../../../../../utils/constants/images.dart';
 import '../../../../../utils/constants/sizes.dart';
+import '../../../models/brand_model.dart';
 
 
 class UCategoryTab extends StatelessWidget {
   const UCategoryTab({
-    super.key,
+    super.key, required this.brand,
   });
 
+  final BrandModel brand;
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -24,9 +26,9 @@ class UCategoryTab extends StatelessWidget {
           child: Column(
             children: [
               ///brand show case 1
-              UBrandShowCase(images: [UImages.productImage47, UImages.productImage43, UImages.productImage7]),
+              UBrandShowCase(images: [UImages.productImage47, UImages.productImage43, UImages.productImage7], brand: brand,),
               ///brand show case 2
-              UBrandShowCase(images: [UImages.productImage47, UImages.productImage43, UImages.productImage7]),
+              UBrandShowCase(images: [UImages.productImage47, UImages.productImage43, UImages.productImage7], brand: brand),
               SizedBox(height: USizes.spaceBtwItems),
               /// you might like heading
               USectionHeading(title: 'You might like', onPressed: (){},),
