@@ -1,4 +1,6 @@
 import 'package:e_commerce/features/shop/controller/home/home_controller.dart';
+import 'package:e_commerce/features/shop/controller/product/product_controller.dart';
+import 'package:e_commerce/features/shop/models/product_model.dart';
 import 'package:e_commerce/utils/constants/images.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +21,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ProductController());
   Get.put(HomeController());
     return Scaffold(
       body: SingleChildScrollView(
@@ -64,13 +67,23 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(height: USizes.spaceBtwItems),
                   /// vertical product card
                  /// GridView of Product Card
-                  UGridLayout(
-                    itemCount: 6,
-                      itemBuilder: (context, index) {
-                        return UProductCard();
-                      },
-                  ),
-        
+                  Obx(
+                    () {
+                      if(controller.isLoading.value){
+                        return const Center(child: CircularProgressIndicator());
+                      }
+                      if(controller.featuredProducts.isEmpty){
+                        return Center(child: Text('Products not found'));
+                      }
+                      return UGridLayout(
+                        itemCount: controller.featuredProducts.length,
+                        itemBuilder: (context, index) {
+                          ProductModel product = controller.featuredProducts[index];
+                          return UProductCard(product: product);
+                        },
+                      );
+                    }
+                  )
                 ],
         
               ),
