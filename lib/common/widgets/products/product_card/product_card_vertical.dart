@@ -33,7 +33,7 @@ class UProductCard extends StatelessWidget {
     final controller = ProductController.instance;
     String? salePercentage = controller.calculateSalePercentage(product.price, product.salePrice);
     return GestureDetector(
-      onTap: () => Get.to(()=>ProductDetailsScreen()),
+      onTap: () => Get.to(()=>ProductDetailsScreen(product: product,)),
       child: Container(
         width: 180,
         padding: const EdgeInsets.all(1),
