@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -222,7 +223,7 @@ class ProductRepository extends GetxController {
     }
   }
 
-  /// [Fetch] - Function to fetch all list of category specific products
+  // /// [Fetch] - Function to fetch all list of category specific products
   // Future<List<ProductModel>> getProductsForCategory({required String categoryId, int limit = 4}) async {
   //   try {
   //     final productCategoryQuery = limit == -1
