@@ -37,7 +37,7 @@ class UProductThumbnailAndSlider extends StatelessWidget {
                       (){
                         final image = controller.selectedProductImage.value;
                         return GestureDetector(
-                          onTap: (){},
+                          onTap: () => controller.selectedProductImage.value,
                           child: CachedNetworkImage(
                             imageUrl: image,
                             progressIndicatorBuilder: (context, url, progress) =>
@@ -61,18 +61,25 @@ class UProductThumbnailAndSlider extends StatelessWidget {
             child: SizedBox(
               height: 80,
               child: ListView.separated(
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) => URoundedImage(
-                  width: 80,
-                  backGroundColor: dark ? UColors.dark : UColors.white,
-                  padding: EdgeInsets.all(USizes.sm),
-                  border: Border.all(color: UColors.primary),
-                  imageUrl: (UImages.productImage27),
-                ),
                 separatorBuilder: (context, index) =>
                     SizedBox(width: USizes.spaceBtwItems),
-                itemCount: 6,
+                itemCount: images.length,
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) => Obx(
+                  (){
+                    bool isImageSelected = controller.selectedProductImage.value == images[index];
+                    return URoundedImage(
+                      width: 80,
+                      isNetworkImage: true,
+                      ontap: () => controller.selectedProductImage.value = images[index],
+                      backGroundColor: dark ? UColors.dark : UColors.white,
+                      padding: EdgeInsets.all(USizes.sm),
+                      border: Border.all(color: isImageSelected ? UColors.primary : Colors.transparent),
+                      imageUrl: (images[index]),
+                    );
+                  }
+                ),
               ),
             ),
           ),
