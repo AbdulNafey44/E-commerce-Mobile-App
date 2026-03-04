@@ -8,6 +8,7 @@ import 'package:e_commerce/features/shop/screens/product_details/widgets/bottom_
 import 'package:e_commerce/features/shop/screens/product_details/widgets/product_attributes.dart';
 import 'package:e_commerce/features/shop/screens/product_details/widgets/product_meta_data.dart';
 import 'package:e_commerce/features/shop/screens/product_details/widgets/product_thumbnail_and_slider.dart';
+import 'package:e_commerce/utils/constants/enum.dart';
 
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:e_commerce/utils/helpers/helper_function.dart';
@@ -35,11 +36,14 @@ class ProductDetailsScreen extends StatelessWidget {
                children: [
                  /// product details ///
                  /// price, titl, stock and brand
-                 UProductMetaData(),
+                 UProductMetaData(product: product),
 
                  /// Attributes
-                 UProductAttributes(),
-                 SizedBox(height: USizes.spaceBtwSections),
+                 if(product.productType == ProductType.variable.toString())...[
+                   UProductAttributes(product: product),
+                   SizedBox(height: USizes.spaceBtwSections),
+                 ],
+
 
                  /// checkout button
                  UElevatedButton(onPressed: () {}, child: Text('Checkout')),
@@ -49,13 +53,13 @@ class ProductDetailsScreen extends StatelessWidget {
                  USectionHeading(title: 'Description', showActionButton: false),
                  SizedBox(height: USizes.spaceBtwItems),
                  ReadMoreText(
+                   product.description ?? '',
                    trimLines: 2,
                    trimMode: TrimMode.Line,
                    trimCollapsedText: 'show more',
                    trimExpandedText: ' Less',
                    moreStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
                    lessStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
-                   'This is a product description of BATA brand shoes. There are more things that can be added.This is a product description of BATA brand shoes. There are more things that can be added',
                  ),
                  SizedBox(height: USizes.spaceBtwSections),
                ],
