@@ -21,7 +21,7 @@ class ProductController extends GetxController {
      super.onInit();
 
   }
-
+  /// Function to fetch only 4 featured products
   Future<void> getFeaturedProduct() async{
      try{
 
@@ -40,7 +40,7 @@ class ProductController extends GetxController {
        isLoading.value = false ;
      }
    }
-
+    /// Calculate sale percentage
    String? calculateSalePercentage(double orignalPrice, double? salePrice){
      if(salePrice == null || salePrice <= 0.0)return null;
      if(orignalPrice <= 0.0) return null;
@@ -49,7 +49,7 @@ class ProductController extends GetxController {
      double percentage = ((orignalPrice - salePrice) / orignalPrice) * 100 ;
      return percentage.toStringAsFixed(1);
    }
-
+    /// Get product price or price range for variable products
    String getProductPrice(ProductModel product){
      double smallestPrice = double.infinity;
      double largestPrice = 0.0;
@@ -74,5 +74,11 @@ class ProductController extends GetxController {
        }
      }
      }
+
+     /// Get product stock status
+     String getProductStatus(int stock){
+     return stock > 0 ? 'in stock' : 'out of stock';
+     }
+
    }
 
