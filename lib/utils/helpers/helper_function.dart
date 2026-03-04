@@ -44,7 +44,9 @@ class UHelperFunction {
       return Colors.indigo;
     } else if(value == 'Silver') {
       return Colors.grey;
-    }else {
+    }else if (value == 'silver'){
+      return Colors.grey;
+    } {
       return null;
     }
   }
