@@ -1,6 +1,9 @@
-
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce/features/shop/models/product_model.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../../../utils/constants/sizes.dart';
 
 class ImageController extends GetxController {
 
@@ -37,5 +40,27 @@ class ImageController extends GetxController {
    }
 
    void showEnlargeImage(String image){
+     Get.to(
+       fullscreenDialog: true,
+             ()  => Dialog.fullscreen(
+                child: Column(
+                  children: [
+                    // image
+                    Padding(padding: EdgeInsets.symmetric(vertical: USizes.defaultSpace * 2, horizontal: USizes.defaultSpace ),
+                     child: CachedNetworkImage(imageUrl: image)),
+                    SizedBox(height: USizes.spaceBtwSections),
+                    /// close button
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: SizedBox(
+                        width: 150,
+                        child: OutlinedButton(onPressed: () => Get.back, child: Text('Close')),
+                      ),
+                    ),
+
+                  ]
+                )
+     ),
+     );
    }
 }
