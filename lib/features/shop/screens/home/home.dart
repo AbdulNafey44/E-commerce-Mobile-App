@@ -22,7 +22,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(ProductController());
-  Get.put(HomeController());
+    Get.put(HomeController());
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -32,7 +32,7 @@ class HomeScreen extends StatelessWidget {
               children: [
                 //...total height + 20 ...///
                 Container(height: USizes.homePrimaryHeaderHeight + 10),
-        
+
                 ///...Primary Header Container..///
                 UPrimaryHeaderContainer(
                   height: USizes.homePrimaryHeaderHeight,
@@ -41,51 +41,53 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       UHomeAppBar(),
                       SizedBox(height: USizes.spaceBtwSections),
-        
+
                       ///...Home Categories...///
                       UHomeCategories(),
                     ],
                   ),
                 ),
-        
+
                 ///...Search Bar...//
                 USearchBar(),
               ],
             ),
+
             ///....lower part...//
-        
             Padding(
               padding: const EdgeInsets.all(USizes.defaultSpace),
               child: Column(
                 children: [
-        
                   ///..banners...//
                   UPromeSlider(),
-        
+
                   const SizedBox(height: USizes.spaceBtwItems),
-                  USectionHeading(title: 'Popular Products', onPressed: () => Get.to(AllProductsScreen()),),
+                  USectionHeading(
+                    title: 'Popular Products',
+                    onPressed: () =>
+                        Get.to(AllProductsScreen(title: 'Popular Products', futureMethod: controller.getAllFeaturedProduct() ,)),
+                  ),
                   const SizedBox(height: USizes.spaceBtwItems),
+
                   /// vertical product card
-                 /// GridView of Product Card
-                  Obx(
-                    () {
-                      if(controller.isLoading.value){
-                        return const Center(child: CircularProgressIndicator());
-                      }
-                      if(controller.featuredProducts.isEmpty){
-                        return Center(child: Text('Products not found'));
-                      }
-                      return UGridLayout(
-                        itemCount: controller.featuredProducts.length,
-                        itemBuilder: (context, index) {
-                          ProductModel product = controller.featuredProducts[index];
-                          return UProductCard(product: product);
-                        },
-                      );
+                  /// GridView of Product Card
+                  Obx(() {
+                    if (controller.isLoading.value) {
+                      return const Center(child: CircularProgressIndicator());
                     }
-                  )
+                    if (controller.featuredProducts.isEmpty) {
+                      return Center(child: Text('Products not found'));
+                    }
+                    return UGridLayout(
+                      itemCount: controller.featuredProducts.length,
+                      itemBuilder: (context, index) {
+                        ProductModel product =
+                            controller.featuredProducts[index];
+                        return UProductCard(product: product);
+                      },
+                    );
+                  }),
                 ],
-        
               ),
             ),
           ],
@@ -94,9 +96,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
