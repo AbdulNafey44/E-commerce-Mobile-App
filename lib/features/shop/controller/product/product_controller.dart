@@ -4,6 +4,7 @@ import 'package:e_commerce/features/shop/models/product_model.dart';
 import 'package:e_commerce/utils/constants/enum.dart';
 import 'package:e_commerce/utils/constants/texts.dart';
 import 'package:e_commerce/utils/popups/snackbar_helpers.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class ProductController extends GetxController {
@@ -13,6 +14,7 @@ class ProductController extends GetxController {
    /// Variables
    final _repository = Get.put(ProductRepository());
    RxList<ProductModel> featuredProducts = <ProductModel>[].obs;
+   RxList<ProductModel> allProducts = <ProductModel>[].obs;
    RxBool isLoading = false.obs;
 
    @override
@@ -40,7 +42,25 @@ class ProductController extends GetxController {
        isLoading.value = false ;
      }
    }
-    /// Calculate sale percentage
+
+   /// Function to fetch all featured products
+   Future<List<ProductModel>> getAllFeaturedProduct() async{
+     try{
+
+       // fetch featured products
+       List<ProductModel> featuredProducts = await  _repository.fetchAllFeaturedProducts();
+       return featuredProducts;
+
+
+     }catch(e){
+       USnackBarHelpers.errorSnackBar(title: 'Failed', message: e.toString());
+       return [];
+     }
+   }
+
+
+
+   /// Calculate sale percentage
    String? calculateSalePercentage(double orignalPrice, double? salePrice){
      if(salePrice == null || salePrice <= 0.0)return null;
      if(orignalPrice <= 0.0) return null;
@@ -80,5 +100,29 @@ class ProductController extends GetxController {
      return stock > 0 ? 'in stock' : 'out of stock';
      }
 
+   /// Function to fetch all products
+   Future<void> getAllProducts() async {
+     try {
+       // Start Loading
+       isLoading.value = true;
+
+       // fetch all products from repository
+       List<ProductModel> allProductsList = await _repository.fetchAllProducts();
+
+       // assign to controller variable
+       this.allProducts.assignAll(allProductsList);
+
+       debugPrint('Total all products fetched: ${allProductsList.length}');
+
+     } catch (e) {
+       USnackBarHelpers.errorSnackBar(
+         title: 'Failed',
+         message: e.toString(),
+       );
+     } finally {
+       // stop loading
+       isLoading.value = false;
+     }
+   }
    }
 
