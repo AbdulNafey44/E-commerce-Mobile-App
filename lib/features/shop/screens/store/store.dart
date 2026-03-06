@@ -12,6 +12,7 @@ import '../../../../common/widgets/appbar/tabbar.dart';
 import '../../../../common/widgets/brands/brand_card.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../brands/all_brands.dart';
+import '../brands/brand_products.dart';
 
 class StoreScreen extends StatelessWidget {
   const StoreScreen({super.key});
@@ -36,7 +37,7 @@ class StoreScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       UStorePrimaryHeader(),
-                      SizedBox(height: USizes.spaceBtwItems),
+                      const SizedBox(height: USizes.spaceBtwItems),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                           horizontal: USizes.defaultSpace,
@@ -47,12 +48,12 @@ class StoreScreen extends StatelessWidget {
                               title: 'Brands',
                               onPressed: () => Get.to(() => BrandsScreen()),
                             ),
-                            SizedBox(height: USizes.spaceBtwItems),
+                            const SizedBox(height: USizes.spaceBtwItems),
                             SizedBox(
                               height: USizes.brandCardHeight,
                               child: Obx(() {
                                 if (brandController.isLoading.value) {
-                                  return UBrandsShimmer();
+                                  return const UBrandsShimmer();
                                 }
 
                                 if (brandController.featuredBrands.isEmpty) {
@@ -61,16 +62,25 @@ class StoreScreen extends StatelessWidget {
 
                                 return ListView.separated(
                                   separatorBuilder: (context, index) =>
-                                      SizedBox(width: USizes.spaceBtwItems),
+                                  const SizedBox(width: USizes.spaceBtwItems),
                                   itemCount: brandController.featuredBrands.length,
                                   shrinkWrap: true,
                                   scrollDirection: Axis.horizontal,
                                   itemBuilder: (context, index) {
                                     BrandModel brand =
                                     brandController.featuredBrands[index];
+
                                     return SizedBox(
                                       width: USizes.brandCardWidth,
-                                      child: UBrandCard(brand: brand),
+                                      child: UBrandCard(
+                                        onTap: () => Get.to(
+                                              () => BrandsProductsScreen(
+                                            title: brand.name,
+                                            brand: brand,
+                                          ),
+                                        ),
+                                        brand: brand,
+                                      ),
                                     );
                                   },
                                 );
@@ -91,20 +101,11 @@ class StoreScreen extends StatelessWidget {
             ];
           },
 
-          /// 🔥 FIXED HERE
-          body: Obx(() {
-            if (brandController.featuredBrands.isEmpty) {
-              return const SizedBox();
-            }
-
-            return TabBarView(
-              children: controller.featureCategories.map((category) {
-                return UCategoryTab(
-                  brand: brandController.featuredBrands.first,
-                );
-              }).toList(),
-            );
-          }),
+          body: TabBarView(
+            children: controller.featureCategories
+                .map((category) => UCategoryTab(category: category))
+                .toList(),
+          ),
         ),
       ),
     );
