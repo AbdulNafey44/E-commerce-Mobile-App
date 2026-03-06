@@ -18,7 +18,7 @@ class UScrolableProducts extends StatelessWidget {
   final List<ProductModel> products;
   @override
   Widget build(BuildContext context) {
-    final controller = AllProductsController.instance;
+    final controller = Get.put(AllProductsController());
     controller.assignProducts(products);
     return Column(
       children: [
