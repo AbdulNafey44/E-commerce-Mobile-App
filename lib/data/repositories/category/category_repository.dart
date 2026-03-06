@@ -12,8 +12,11 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:dio/dio.dart' as dio;
 
+import '../../../features/shop/models/brand_category_model.dart';
+import '../../../features/shop/models/product_category_model.dart';
 import '../../../utils/exceptions/firebase_exceptions.dart';
 import '../../../utils/exceptions/format_exceptions.dart';
+import '../../../utils/exceptions/platform_exceptions.dart';
 
 class CategoryRepository extends GetxController{
 
@@ -22,6 +25,44 @@ class CategoryRepository extends GetxController{
   /// Variables
   final _db = FirebaseFirestore.instance;
   final _cloudinaryServices = Get.put(CloudinaryServices());
+
+
+  /// [Upload] - Function to upload list of brand categories
+  Future<void> uploadBrandCategory(List<BrandCategoryModel> brandCategories) async{
+    try{
+      for(final brandCategory in brandCategories) {
+        await _db.collection(UKeys.brandCategoryCollection).doc().set(brandCategory.toJson());
+      }
+
+    } on FirebaseException catch(e){
+      throw UFirebaseException(e.code).message;
+    } on FormatException catch(_){
+      throw UFormatException();
+    } on PlatformException catch(e){
+      throw UPlatformException(e.code).message;
+    } catch(e){
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
+  Future<void> uploadProductCategory(List<ProductCategoryModel> productCategories) async{
+    try{
+      for(final productCategory in productCategories) {
+        await _db.collection(UKeys.productCategoryCollection).doc().set(productCategory.toJson());
+        print('upload${productCategory.productId}');
+      }
+
+
+    } on FirebaseException catch(e){
+      throw UFirebaseException(e.code).message;
+    } on FormatException catch(_){
+      throw UFormatException();
+    } on PlatformException catch(e){
+      throw UPlatformException(e.code).message;
+    } catch(e){
+      throw 'Something went wrong. Please try again';
+    }
+  }
 
 
 /// [UploadCategory] - Function to upload list of categories
