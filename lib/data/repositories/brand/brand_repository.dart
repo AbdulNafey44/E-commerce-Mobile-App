@@ -8,6 +8,7 @@ import 'package:e_commerce/utils/constants/keys.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
+import '../../../features/shop/models/brand_category_model.dart';
 import '../../../utils/exceptions/firebase_exceptions.dart';
 import '../../../utils/exceptions/format_exceptions.dart';
 import '../../../utils/exceptions/platform_exceptions.dart';
@@ -70,6 +71,37 @@ class BrandRepository extends GetxController{
 
       return [];
 
+    }on FirebaseException catch(e){
+      throw UFirebaseException(e.code).message;
+    } on FormatException catch(_){
+      throw UFormatException();
+    } on PlatformException catch(e){
+      throw UPlatformException(e.code).message;
+    } catch(e){
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
+  /// [Fetch] - Function to get category specific brands
+  Future<List<BrandModel>> fetchBrandsForCategory(String categoryId) async {
+    try{
+
+      // Query to get all documents where categoryId matches the provided categoryId
+      final brandCategoryQuery = await _db.collection(UKeys.brandCategoryCollection).where('categoryId', isEqualTo: categoryId).get();
+
+      // Convert documents to Model
+      List<BrandCategoryModel> brandCategories = brandCategoryQuery.docs.map((doc) => BrandCategoryModel.fromSnapshot(doc)).toList();
+
+      // Extract brandIds from BrandCategoryModel
+      List<String> brandIds = brandCategories.map((brandCategory) => brandCategory.brandId).toList();
+
+      // Query to get brands based on brandIds
+      final brandsQuery = await _db.collection(UKeys.brandsCollection).where(FieldPath.documentId, whereIn: brandIds).limit(2).get();
+
+      // convert documents to model
+      List<BrandModel> brands = brandsQuery.docs.map((doc) => BrandModel.fromSnapshot(doc)).toList();
+
+      return brands;
     }on FirebaseException catch(e){
       throw UFirebaseException(e.code).message;
     } on FormatException catch(_){
