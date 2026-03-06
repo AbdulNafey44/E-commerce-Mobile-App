@@ -1,9 +1,12 @@
 
 
 import 'package:e_commerce/data/repositories/category/category_repository.dart';
+import 'package:e_commerce/data/repositories/product/product_repository.dart';
 import 'package:e_commerce/features/shop/models/category_model.dart';
 import 'package:e_commerce/utils/popups/snackbar_helpers.dart';
 import 'package:get/get.dart';
+
+import '../../models/product_model.dart';
 
 class CategoryController extends GetxController{
    static CategoryController get find => Get.find();
@@ -41,5 +44,16 @@ class CategoryController extends GetxController{
        isCategoriesLoading.value = false ;
      }
    }
+
+   /// Get category products
+  Future<List<ProductModel>> getCategoryProducts({required String categoryId, int limit = 4}) async {
+     try{
+       final products = ProductRepository.instance.getProductsForCategory(categoryId: categoryId, limit: limit);
+       return products;
+     }catch(e){
+       USnackBarHelpers.errorSnackBar(title: 'Failed' , message: e.toString());
+       return [];
+     }
+  }
 
 }
