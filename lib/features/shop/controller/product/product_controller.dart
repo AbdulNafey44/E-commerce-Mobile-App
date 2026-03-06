@@ -99,30 +99,5 @@ class ProductController extends GetxController {
      String getProductStatus(int stock){
      return stock > 0 ? 'in stock' : 'out of stock';
      }
-
-   /// Function to fetch all products
-   Future<void> getAllProducts() async {
-     try {
-       // Start Loading
-       isLoading.value = true;
-
-       // fetch all products from repository
-       List<ProductModel> allProductsList = await _repository.fetchAllProducts();
-
-       // assign to controller variable
-       this.allProducts.assignAll(allProductsList);
-
-       debugPrint('Total all products fetched: ${allProductsList.length}');
-
-     } catch (e) {
-       USnackBarHelpers.errorSnackBar(
-         title: 'Failed',
-         message: e.toString(),
-       );
-     } finally {
-       // stop loading
-       isLoading.value = false;
-     }
-   }
    }
 
