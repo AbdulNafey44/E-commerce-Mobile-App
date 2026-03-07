@@ -41,7 +41,7 @@ class AuthenticationRepository extends GetxController {
     screenRedirect();
   }
 
-  void screenRedirect() {
+ Future<void> screenRedirect() async {
     final user = FirebaseAuth.instance.currentUser;
 
     if (user != null) {
@@ -49,6 +49,7 @@ class AuthenticationRepository extends GetxController {
       if (user.emailVerified) {
         // if verified, go to navigation menu
         Get.offAll(NavigationMenu());
+      await  GetStorage.init(user.uid);
       } else {
         // if user not verified, go to verify screen
         Get.offAll(VerifyScreen(email: user.email));
