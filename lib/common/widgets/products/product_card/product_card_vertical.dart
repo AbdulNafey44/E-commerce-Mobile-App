@@ -19,6 +19,7 @@ import '../../../../utils/constants/sizes.dart';
 import '../../../style/shadow.dart';
 import '../../text/product_price_text.dart';
 import '../../text/product_title_text.dart';
+import '../favourite/favourite_icon.dart';
 
 class UProductCard extends StatelessWidget {
   const UProductCard({
@@ -69,7 +70,7 @@ class UProductCard extends StatelessWidget {
                   Positioned(
                     right: 0,
                     top: 0,
-                    child: UCircularIcon(icon: Iconsax.heart5, color: Colors.red),
+                    child: UFavouriteIcon(productId: product.id),
                   ),
                 ],
               ),
