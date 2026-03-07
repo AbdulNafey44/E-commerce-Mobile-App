@@ -5,7 +5,6 @@ import 'package:e_commerce/features/shop/screens/all_products/all_products.dart'
 import 'package:e_commerce/utils/helpers/cloud_helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import '../../../../../common/widgets/brands/brand_showcase.dart';
 import '../../../../../common/widgets/layouts/grid_layout.dart';
 import '../../../../../common/widgets/products/product_card/product_card_vertical.dart';
