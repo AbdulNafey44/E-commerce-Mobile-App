@@ -8,6 +8,7 @@ import 'package:iconsax/iconsax.dart';
 import '../../../../../common/widgets/customeshape/rounded_container.dart';
 import '../../../../../common/widgets/icons/circular_icon.dart';
 import '../../../../../common/widgets/images/rounded_image.dart';
+import '../../../../../common/widgets/products/favourite/favourite_icon.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/images.dart';
 import '../../../../../utils/constants/sizes.dart';
@@ -58,7 +59,7 @@ class UProductCardHorizontal extends StatelessWidget {
                 Positioned(
                   right: 0,
                   top: 0,
-                  child: UCircularIcon(icon: Iconsax.heart5, color: Colors.red),
+                  child: UFavouriteIcon(productId: '',),
                 ),
               ],
             ),
