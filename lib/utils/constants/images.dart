@@ -7,6 +7,12 @@
   static const String onboarding3Animations= 'assets/animations/delivery.json';
   static const String loadingAnimation = 'assets/animation/loading.json';
 
+
+
+  // animations
+  static const String pencilAnimation = 'assets/animations/pencil_drawing.json';
+  static const String cartEmptyAnimation = 'assets/animations/cart_empty.json';
+
   // logos
   static const String profileLogo = 'assets/logo/profile.png';
   static const String facebookIcon = 'assets/logo/facebook-icon.png';
