@@ -39,6 +39,7 @@ class AuthenticationRepository extends GetxController {
 
 
     screenRedirect();
+
   }
 
  Future<void> screenRedirect() async {
