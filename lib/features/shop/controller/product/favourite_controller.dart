@@ -25,7 +25,8 @@ class FavouriteController extends GetxController {
   }
 
   Future<void> initFavourite() async {
-  String encodeFavourite = await _storage.read('favourites');
+  String? encodeFavourite =  _storage.read('favourites');
+  if(encodeFavourite == null) return ;
   Map<String, dynamic> storedFavourites = jsonDecode(encodeFavourite) as Map<String, dynamic> ;
   favourites.assignAll(storedFavourites.map((key, value) => MapEntry(key, value)));
   }
