@@ -52,7 +52,7 @@ class UHomeCategories extends StatelessWidget {
                   itemCount: categories.length,
                   itemBuilder: (context, index) {
                     CategoryModel category = categories[index];
-                    return UVerticalImageText(title: category.name, image: category.image,textColor: UColors.white, onTap:() =>  Get.to(SubCategoryScreen()),);
+                    return UVerticalImageText(title: category.name, image: category.image,textColor: UColors.white, onTap:() =>  Get.to(SubCategoryScreen(category: category)),);
                   },
                 ),
               );
