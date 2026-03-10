@@ -94,25 +94,27 @@ class UProductCardHorizontal extends StatelessWidget {
                       ],
                     ),
                     Spacer(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        /// product price
-                        Flexible(child: UProductPriceText(price: controller.getProductPrice(product))),
-                        ///add btn
-                        Container(
-                          width: USizes.iconLg * 1.2,
-                          height: USizes.iconLg * 1.2,
-                          decoration: BoxDecoration(
-                              color: UColors.primary,
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(USizes.cardRadiusMd),
-                                bottomRight: Radius.circular(USizes.productImageRadius),
-                              )
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          /// product price
+                          Flexible(child: UProductPriceText(price: controller.getProductPrice(product))),
+                          ///add btn
+                          Container(
+                            width: USizes.iconLg * 1.2,
+                            height: USizes.iconLg * 1.2,
+                            decoration: BoxDecoration(
+                                color: UColors.primary,
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(USizes.cardRadiusMd),
+                                  bottomRight: Radius.circular(USizes.productImageRadius),
+                                )
+                            ),
+                            child: Icon(Iconsax.add, color: UColors.white),
                           ),
-                          child: Icon(Iconsax.add, color: UColors.white),
-                        ),
-                      ],
+                        ],
+                      ),
                     )
                   ],
                 )
