@@ -27,20 +27,20 @@ class AddNewAddressScreen extends StatelessWidget {
                TextFormField(
                  controller: controller.name,
                  validator: (value) => UValidator.validateEmptyText('name', value),
-                 decoration: InputDecoration(prefixIcon: Icon(Iconsax.user), labelText: 'Name'),),
+                 decoration: InputDecoration(prefixIcon: Icon(Iconsax.user), labelText: 'Name')),
                 SizedBox(height: USizes.spaceBtwInputFields),
                 /// Phone Number
                 TextFormField(
                   controller: controller.phoneNumber,
                   validator: (value) => UValidator.validateEmptyText('phoneNumber', value),
-                  decoration: InputDecoration(prefixIcon: Icon(Iconsax.mobile), labelText: 'Phone Number'),),
+                  decoration: InputDecoration(prefixIcon: Icon(Iconsax.mobile), labelText: 'Phone Number')),
                 SizedBox(height: USizes.spaceBtwInputFields),
                 Row(children: [
                   /// Street
                   Expanded(child: TextFormField(
                     controller: controller.street,
                     validator: (value) => UValidator.validateEmptyText('street', value),
-                    decoration: InputDecoration(prefixIcon: Icon(Iconsax.building_31), labelText: 'Street'),)),
+                    decoration: InputDecoration(prefixIcon: Icon(Iconsax.building_31), labelText: 'Street'))),
                   SizedBox(width: USizes.spaceBtwInputFields),
                   /// Postal Code
                   Expanded(child: TextFormField(
