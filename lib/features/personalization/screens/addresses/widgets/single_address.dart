@@ -26,9 +26,6 @@ class USingleAddress extends StatelessWidget {
       return  InkWell(
         onTap: onTap,
         child: URoundedContainer(
-
-
-
             width: double.infinity,
             showBorder: true,
             backgroundColor: isSelected? UColors.primary.withValues(alpha: 0.4) : Colors.transparent,
@@ -41,10 +38,10 @@ class USingleAddress extends StatelessWidget {
                   children: [
                     /// Name
                     Text( address.name ,style: Theme.of(context).textTheme.titleLarge,maxLines: 1,overflow: TextOverflow.ellipsis),
-                    SizedBox(height: USizes.spaceBtwItems /2,),
+                    SizedBox(height: USizes.spaceBtwItems /2),
                     /// Phone Number
                     Text(address.phoneNumber, maxLines: 1,overflow: TextOverflow.ellipsis),
-                    SizedBox(height: USizes.spaceBtwItems /2,),
+                    SizedBox(height: USizes.spaceBtwItems /2),
                     /// Address
                     Text(address.toString()),
 
