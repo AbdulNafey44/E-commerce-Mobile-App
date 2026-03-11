@@ -80,7 +80,7 @@ class AddressController extends GetxController {
       USnackBarHelpers.errorSnackBar(title: 'Failed!', message: e.toString());
     }
   }
-  /// Function to fetch user addresses
+  /// Function to fetch specific user address addresses
   Future<List<AddressModel>> getAllAddress() async {
     try{
 
