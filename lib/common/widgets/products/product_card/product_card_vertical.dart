@@ -17,6 +17,7 @@ import 'package:iconsax/iconsax.dart';
 import '../../../../features/shop/screens/product_details/product_details.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../style/shadow.dart';
+import '../../button/add_to_cart_button.dart';
 import '../../text/product_price_text.dart';
 import '../../text/product_title_text.dart';
 import '../favourite/favourite_icon.dart';
@@ -96,18 +97,7 @@ class UProductCard extends StatelessWidget {
                     children: [
                       UProductPriceText(price: controller.getProductPrice(product)),
                       ///add btn
-                      Container(
-                        width: USizes.iconLg ,
-                        height: USizes.iconLg,
-                        decoration: BoxDecoration(
-                            color: UColors.primary,
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(USizes.cardRadiusMd),
-                              bottomRight: Radius.circular(USizes.productImageRadius),
-                            )
-                        ),
-                        child: Icon(Iconsax.add, color: UColors.white),
-                      )
+                      ProductAddToCartButton(product: product),
                     ],
                   )
                 ],
