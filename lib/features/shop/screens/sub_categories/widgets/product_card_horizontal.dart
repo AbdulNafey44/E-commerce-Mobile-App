@@ -1,3 +1,4 @@
+import 'package:e_commerce/common/widgets/button/add_to_cart_button.dart';
 import 'package:e_commerce/common/widgets/text/brand_title_with_verify_icon.dart';
 import 'package:e_commerce/common/widgets/text/product_price_text.dart';
 import 'package:e_commerce/common/widgets/text/product_title_text.dart';
@@ -94,27 +95,14 @@ class UProductCardHorizontal extends StatelessWidget {
                       ],
                     ),
                     Spacer(),
-                    Expanded(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          /// product price
-                          Flexible(child: UProductPriceText(price: controller.getProductPrice(product))),
-                          ///add btn
-                          Container(
-                            width: USizes.iconLg * 1.2,
-                            height: USizes.iconLg * 1.2,
-                            decoration: BoxDecoration(
-                                color: UColors.primary,
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(USizes.cardRadiusMd),
-                                  bottomRight: Radius.circular(USizes.productImageRadius),
-                                )
-                            ),
-                            child: Icon(Iconsax.add, color: UColors.white),
-                          ),
-                        ],
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        /// product price
+                        Flexible(child: UProductPriceText(price: controller.getProductPrice(product))),
+                        ///add btn
+                       ProductAddToCartButton(product: product),
+                      ],
                     )
                   ],
                 )
