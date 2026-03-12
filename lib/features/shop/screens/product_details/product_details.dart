@@ -70,7 +70,7 @@ class ProductDetailsScreen extends StatelessWidget {
         ),
       ),
       /// [Bottom Navigation]
-      bottomNavigationBar: UBottomAddToCart() ,
+      bottomNavigationBar: UBottomAddToCart(product: product) ,
     );
   }
 }
