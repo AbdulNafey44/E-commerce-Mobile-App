@@ -1,3 +1,4 @@
+import 'package:e_commerce/features/shop/models/cart_item_model.dart';
 import 'package:e_commerce/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 
@@ -10,20 +11,22 @@ import '../../text/product_title_text.dart';
 
 class UCartItom extends StatelessWidget {
   const UCartItom({
-    super.key,
+    super.key, required this.cartItem,
 
   });
 
-
+  final CartItemModel cartItem ;
 
   @override
   Widget build(BuildContext context) {
     final bool dark = UHelperFunction.isDarkMode(context);
+
     return Row(
       children: [
         /// Product Image
         URoundedImage(
-          imageUrl: UImages.productImage4a,
+          imageUrl: cartItem.image ?? '',
+          isNetworkImage: true,
           height: 60,
           width: 60,
           padding: EdgeInsets.all(USizes.sm),
@@ -34,19 +37,19 @@ class UCartItom extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             /// Brand
-            UBrandTitleWithverifyIcon(title: 'Iphone'),
+            UBrandTitleWithverifyIcon(title: cartItem.brandName ?? ''),
             /// Title
-            UProductTitleText(title: 'Iphone 14 64 GB'),
+            UProductTitleText(title: cartItem.title),
             /// Variations
-            RichText(text: TextSpan(children:[
-              TextSpan(text: 'Color ',style: Theme.of(context).textTheme.bodySmall),
-              TextSpan(text: 'Green ',style: Theme.of(context).textTheme.bodyLarge),
-              TextSpan(text: 'Storage ',style: Theme.of(context).textTheme.bodySmall),
-              TextSpan(text: '512GB ',style: Theme.of(context).textTheme.bodyLarge),
-            ],
-            )),
+            RichText(
+              text: TextSpan(children: (cartItem.selectedVariation ?? {}).entries.map((e) => TextSpan(
+                       children: [
+                         TextSpan(text: e.key,style: Theme.of(context).textTheme.bodySmall),
+                         TextSpan(text: '${e.value}',style: Theme.of(context).textTheme.bodyLarge),
+                       ]
+              )).toList())),
 
-          ],
+              ],
         ),)
       ],
     );
