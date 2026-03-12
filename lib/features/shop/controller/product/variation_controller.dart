@@ -1,3 +1,4 @@
+import 'package:e_commerce/features/shop/controller/cart/cart_controller.dart';
 import 'package:e_commerce/features/shop/controller/product/image_controller.dart';
 import 'package:e_commerce/features/shop/models/product_model.dart';
 import 'package:e_commerce/features/shop/models/product_variation_model.dart';
@@ -24,7 +25,7 @@ class VariationController extends GetxController {
 
     selectedAttribute[attributeName] = attributeValue;
     selectedAttributes[attributeName] = attributeValue;
-
+    // get selected variation
     ProductVariationModel selectedVariation = product.productVariations!
         .firstWhere(
           (variation) => isSameAttributeValue(
@@ -33,10 +34,14 @@ class VariationController extends GetxController {
       ),
       orElse: () => ProductVariationModel.empty(),
     );
-
+     // show the selected variation image as main image
     if (selectedVariation.image.isNotEmpty) {
       ImageController.instance.selectedProductImage.value =
           selectedVariation.image;
+    }
+    if(selectedVariation.id.isNotEmpty){
+      final cartController = CartController.instance;
+      cartController.productQuantityInCart.value = cartController.getVariationQuantityInCart(product.id, selectedVariation.id);
     }
 
     this.selectedVariation(selectedVariation);
@@ -84,5 +89,11 @@ class VariationController extends GetxController {
     variationStockStatus.value = selectedVariation.value.stock > 0
         ? 'in stock'
         : 'out of stock';
+  }
+  // reset selected attributes when switching product
+  void resetSelectedAttributes(){
+    selectedAttributes.clear();
+    variationStockStatus.value = '';
+    selectedVariation.value = ProductVariationModel.empty();
   }
 }
